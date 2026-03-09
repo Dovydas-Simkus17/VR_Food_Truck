@@ -14,39 +14,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentVersion: 1.01
   subtype: kitchenchaos
-  lastShownTimestamp: 1772973337
+  lastShownTimestamp: 1773059843
   lastUpdateResponse:
-    version: 1.00
+    version: 1.01
     versionUrl: https://unitycodemonkey.com
-  checkedLastUpdateTimestamp: 1772973337
+  checkedLastUpdateTimestamp: 1773059843
   lastQOTDResponse:
-    questionId: 163
-    questionText: What is the purpose of Unity Hub?
-    answerA: Provide a space for the community to interact
-    answerB: Manage different Unity versions and Projects
-    answerC: Dashboard for Unity services
+    questionId: 279
+    questionText: 'What are the minimum requirements (array size) to draw a Mesh
+      Quad?
+
+      <p>Mesh mesh = new Mesh();</p>
+
+      <p>mesh.vertices = ???</p>
+
+      <p>mesh.uv
+      = ???</p>
+
+      <p>mesh.triangles = ???</p>'
+    answerA: 4 vertices, 4 uvs, 2 triangles
+    answerB: 4 vertices, 4 uvs, 6 triangles
+    answerC: 6 vertices, 3 uvs, 4 triangles
     answerD: 
     answerE: 
-  lastQotdTimestamp: 1772973337
+  lastQotdTimestamp: 1773059843
   lastDynamicHeaderResponse:
-    topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/humbleBundleSyntyMar25.png
-    topText: Make ANY game with these awesome Assets! (96% OFF ENDS SOON!)
+    topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/humbleMar26Audio.png
+    topText: Awesome HumbleBundle with thousands of SFX and Music, 99% OFF!
     topLink: humblebundle
-    bottomText: Learn Unity DOTS for MASSIVE Performance Boosts! (and make an RTS)
-    bottomLink: dotscourse
-  lastDynamicHeaderTimestamp: 1772973337
+    bottomText: My 10+ Years of C# Knowledge in 1 Course!
+    bottomLink: csharpcourse
+  lastDynamicHeaderTimestamp: 1773059843
   websiteLatestMessage:
     text: <a href="https://cmonkey.co/freecourses">Check out all my FREE courses!
       Click here!</a>
-  websiteLatestMessageTimestamp: 1772973337
+  websiteLatestMessageTimestamp: 1773059843
   websiteLatestVideos:
     videos:
-    - youTubeId: ZIg7VoD9ptI
-      title: The FUTURE of Unity in 2025 and BEYOND!
-    - youTubeId: W_XOZAWJF24
-      title: I made the MOST PROFITABLE Game as a Test!
-    - youTubeId: J0KMvH-yFmA
-      title: TOP 10 NEW Games, Made with Unity! (FEBRUARY 2025)
-    - youTubeId: DOSLOa7cnoE
-      title: I SHOULD have done this a long time ago, and YOU too!
-  websiteLatestVideosTimestamp: 1772973337
+    - youTubeId: _QrcgWsr2PI
+      title: What is the FUTURE of Unity in 2026?
+    - youTubeId: PZnS3TwucQg
+      title: The Biggest Indie MISTAKE! (and 7 other tips)
+    - youTubeId: uNNz1kOsLVw
+      title: Steam's 30% Cut Isn't Even the Biggest Problem!
+    - youTubeId: XShVX_PBi1o
+      title: BEST NEW Visual Assets to INSPIRE YOU! (FEBRUARY 2026)
+  websiteLatestVideosTimestamp: 1773059843
