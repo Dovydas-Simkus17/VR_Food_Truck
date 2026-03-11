@@ -1,22 +1,18 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public class Cooking : MonoBehaviour
 {
     public bool isActive = false;
-    public float heatLevel = 0f;
+    public float heatLevel = 2f;
     public Collider stoveTop;
     public ParticleSystem fireEffect;
-
+    private List<Ingredient> ingredientsCooking = new List<Ingredient>();
     //Testing
     public LayerMask m_LayerMask;
-    private enum State
-    {
-        Idle,
-        Frying,
-        Fried,
-        Burned
-    }
+
     public void SetHeat(float value)
     {
         
@@ -39,28 +35,59 @@ public class Cooking : MonoBehaviour
     }
     void FixedUpdate()
     {
-        MyCollisions();
+        FindIngredients();
+        MyCooking();
     }
-    void MyCollisions()
-    {
-        Collider[] hitColliders = Physics.OverlapBox(gameObject.transform.position, transform.localScale / 2, Quaternion.identity, m_LayerMask);
-        int i = 0;
-        // Check when there is a new collider coming into contact with the box
-        while (i < hitColliders.Length)
-        {
-            // Output all of the collider names
-            Debug.Log("Hit : " + hitColliders[i].name + i);
-            // Increase the number of Colliders in the array
+    public Vector3 halfExtents = new Vector3(1, 1, 1);
+    void FindIngredients()
+    {   
+        //Debug.Log("We are in MyCollisions");
+        Collider[] hitColliders = Physics.OverlapBox(gameObject.transform.position, halfExtents, gameObject.transform.rotation, m_LayerMask);
+        //Debug.Log(hitColliders);
 
+        // Check when there is a new collider coming into contact with the box
+        foreach (Collider collider in hitColliders)
+        {
+            Ingredient ing = collider.GetComponent<Ingredient>();
+
+            if (ing != null)
+            {
+                ingredientsCooking.Add(ing);
+            }
         }
+            
+    }
+
+    void MyCooking()
+    {
+        ingredientsCooking.ForEach(cook => {
+            //Debug.Log("We are cooking: " + cook);
+            Debug.Log("At the rate of: " + heatLevel * Time.fixedDeltaTime);
+            cook.Cook(heatLevel * Time.fixedDeltaTime);
+        });
+        
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("SOMETHING HIT ME ");
         if (other.tag == "ing")
         {
             Debug.Log("Ingredient " + other.tag);
+            other.gameObject.GetComponent<Ingredient>().SetIsCookingTrue();
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (ingredientsCooking.Count == 1)
+        {
+            ingredientsCooking.Clear();
+        }
+        else
+        {
+            other.gameObject.GetComponent<Ingredient>().SetIsCookingfalse();
+            ingredientsCooking.Remove(other.GetComponent<Ingredient>());
+        }
+        Debug.Log(ingredientsCooking);
     }
 
     // Draw the Box Overlap as a gizmo to show where it currently is testing. Click the Gizmos button to see this.
@@ -70,6 +97,6 @@ public class Cooking : MonoBehaviour
         // Check that it is being run in Play Mode, so it doesn't try to draw this in Editor mode
         if (Application.isPlaying)
             // Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
-            Gizmos.DrawWireCube(transform.position, transform.localScale);
+            Gizmos.DrawWireCube(transform.position, halfExtents);
     }
 }

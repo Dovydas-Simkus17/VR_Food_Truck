@@ -185,6 +185,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ingredient
   currentState: {fileID: 11400000, guid: 96381d1d29d4b4a4b8aba5597746aa1b, type: 2}
+--- !u!114 &123552664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123552654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eda257865e46b8243883511a054b2064, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KitchenObject
+  kitchenObjectSO: {fileID: 11400000, guid: 96381d1d29d4b4a4b8aba5597746aa1b, type: 2}
 --- !u!1 &214369208 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5683800834422772297, guid: 02954bf43ed716a49969fcde5f6e84d4, type: 3}
@@ -537,7 +550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Cooking
   isActive: 0
-  heatLevel: 2
+  heatLevel: 0
   stoveTop: {fileID: 366021177}
   fireEffect: {fileID: 0}
   m_LayerMask:
@@ -1052,15 +1065,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 02a24f0f7eb1b624ab903663ee9a248c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.446
+      value: -2.266
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 02a24f0f7eb1b624ab903663ee9a248c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.925
+      value: 1.642
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 02a24f0f7eb1b624ab903663ee9a248c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.149
+      value: -3.464
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 02a24f0f7eb1b624ab903663ee9a248c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1115,6 +1128,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 02a24f0f7eb1b624ab903663ee9a248c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 123552660}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 02a24f0f7eb1b624ab903663ee9a248c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 123552664}
   m_SourcePrefab: {fileID: 100100000, guid: 02a24f0f7eb1b624ab903663ee9a248c, type: 3}
 --- !u!1 &970831672 stripped
 GameObject:
@@ -1190,63 +1206,6 @@ MonoBehaviour:
   breakForce: 35
   pickedUp: 0
   playerInteractions: {fileID: 0}
---- !u!1001 &1036602600
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: da32d18f77866bf47945f10fe354f359, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.653156
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: da32d18f77866bf47945f10fe354f359, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.3907808
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: da32d18f77866bf47945f10fe354f359, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -3.0387034
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: da32d18f77866bf47945f10fe354f359, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: da32d18f77866bf47945f10fe354f359, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: da32d18f77866bf47945f10fe354f359, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: da32d18f77866bf47945f10fe354f359, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: da32d18f77866bf47945f10fe354f359, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: da32d18f77866bf47945f10fe354f359, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: da32d18f77866bf47945f10fe354f359, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: da32d18f77866bf47945f10fe354f359, type: 3}
-      propertyPath: m_Name
-      value: Burned meat patty
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: da32d18f77866bf47945f10fe354f359, type: 3}
 --- !u!1 &1085890274 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4877528076551237918, guid: 02954bf43ed716a49969fcde5f6e84d4, type: 3}
@@ -2684,63 +2643,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6262313869030940272, guid: b8fce47f4b334804380b8336dab362b1, type: 3}
   m_PrefabInstance: {fileID: 1187256679}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1959830064
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 598a91cf1806eae49abf8273f6ad8ffa, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.6895933
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 598a91cf1806eae49abf8273f6ad8ffa, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.39078078
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 598a91cf1806eae49abf8273f6ad8ffa, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -3.37
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 598a91cf1806eae49abf8273f6ad8ffa, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 598a91cf1806eae49abf8273f6ad8ffa, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 598a91cf1806eae49abf8273f6ad8ffa, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 598a91cf1806eae49abf8273f6ad8ffa, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 598a91cf1806eae49abf8273f6ad8ffa, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 598a91cf1806eae49abf8273f6ad8ffa, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 598a91cf1806eae49abf8273f6ad8ffa, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 598a91cf1806eae49abf8273f6ad8ffa, type: 3}
-      propertyPath: m_Name
-      value: Cooked meat patty
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 598a91cf1806eae49abf8273f6ad8ffa, type: 3}
 --- !u!1001 &1971769112
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2953,8 +2855,6 @@ SceneRoots:
   - {fileID: 1187256679}
   - {fileID: 1308892188}
   - {fileID: 902264569}
-  - {fileID: 1959830064}
-  - {fileID: 1036602600}
   - {fileID: 526163081}
   - {fileID: 1660183631}
   - {fileID: 505084248}
