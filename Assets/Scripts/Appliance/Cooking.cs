@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class Cooking : MonoBehaviour
 {
-    public bool isActive = false;
-    public float heatLevel = 0f;
+    private bool isActive = false;
+    private float heatLevel = 1f;
     public GameObject Lever;
 
     public Collider stoveTop;
@@ -42,12 +42,12 @@ public class Cooking : MonoBehaviour
         FindIngredients();
         MyCooking();
     }
-    public Vector3 halfExtents = new Vector3(1, 1, 1);
+    private Vector3 halfExtents = new Vector3(1, 1, 1);
     void FindIngredients()
     {   
         //Debug.Log("We are in MyCollisions");
         Collider[] hitColliders = Physics.OverlapBox(gameObject.transform.position, halfExtents, gameObject.transform.rotation, m_LayerMask);
-        //Debug.Log(hitColliders);
+        Debug.Log(hitColliders);
 
         // Check when there is a new collider coming into contact with the box
         foreach (Collider collider in hitColliders)
@@ -67,7 +67,7 @@ public class Cooking : MonoBehaviour
         SetHeat(GetHeat());
         ingredientsCooking.ForEach(cook => {
             //Debug.Log("We are cooking: " + cook);
-            //Debug.Log("At the rate of: " + heatLevel * Time.fixedDeltaTime);
+            //Debug.Log("At the rate of: " + GetHeat() * Time.fixedDeltaTime);
             cook.Cook(GetHeat() * Time.fixedDeltaTime);
         });
         
