@@ -15,6 +15,6 @@ MonoBehaviour:
   stateName: UncookedMeatPatty
   prefab: {fileID: -8679921383154817045, guid: 02a24f0f7eb1b624ab903663ee9a248c, type: 3}
   material: {fileID: 2100000, guid: 874e968446c933942a2e13d2e840aa73, type: 2}
-  mesh: {fileID: 0}
+  mesh: {fileID: 6561926954493806791, guid: 02a24f0f7eb1b624ab903663ee9a248c, type: 3}
   timeTillNextState: 200
   nextState: {fileID: 11400000, guid: af129620a02c19141bef53046873b7e2, type: 2}

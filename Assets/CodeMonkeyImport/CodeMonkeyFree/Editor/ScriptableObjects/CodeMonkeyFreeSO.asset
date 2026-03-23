@@ -14,58 +14,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentVersion: 1.01
   subtype: kitchenchaos
-  lastShownTimestamp: 1773165900
+  lastShownTimestamp: 1774222327
   lastUpdateResponse:
     version: 1.01
     versionUrl: https://unitycodemonkey.com
-  checkedLastUpdateTimestamp: 1773165900
+  checkedLastUpdateTimestamp: 1774222327
   lastQOTDResponse:
-    questionId: 280
-    questionText: 'When would this code cause an error?
+    questionId: 282
+    questionText: 'If I do:
 
-      <p>Building closest
-      = null;</p>
+      <p>Instantiate(myPrefab, Input.mousePosition,
+      Quaternion.identity);</p>
 
-      <p>for (int i = 0; i &lt; instanceList.Count; i++) {</p>
-
-      <p>&nbsp;
-      &nbsp; if (Vector3.Distance(position, instanceList[i].GetPosition()) &lt; Vector3.Distance(position,
-      closest.GetPosition())) {</p>
-
-      <p>&nbsp; &nbsp; &nbsp; &nbsp; closest
-      = instanceList[i];</p>
-
-      <p>&nbsp; &nbsp; }</p>
-
-      <p>}</p>
-
-      <p>return
-      closest;</p>'
-    answerA: When instanceList is empty
-    answerB: When instanceList has at least one element
-    answerC: When instanceList has exactly two elements
+      <p>Will myPrefab be spawned under the mouse?</p>'
+    answerA: Yes
+    answerB: No
+    answerC: 
     answerD: 
     answerE: 
-  lastQotdTimestamp: 1773165900
+  lastQotdTimestamp: 1774222327
   lastDynamicHeaderResponse:
-    topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/humbleMar26Audio.png
-    topText: Awesome HumbleBundle with thousands of SFX and Music, 99% OFF!
+    topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/humbleBundleMar26Synty.png
+    topText: Synty Bundle! Awesome Low Poly Sci-Fi Assets and Anims!
     topLink: humblebundle
     bottomText: My 10+ Years of C# Knowledge in 1 Course!
     bottomLink: csharpcourse
-  lastDynamicHeaderTimestamp: 1773165900
+  lastDynamicHeaderTimestamp: 1774222327
   websiteLatestMessage:
     text: <a href="https://cmonkey.co/freecourses">Check out all my FREE courses!
       Click here!</a>
-  websiteLatestMessageTimestamp: 1773165900
+  websiteLatestMessageTimestamp: 1774222327
   websiteLatestVideos:
     videos:
+    - youTubeId: xvGRjPssGnw
+      title: Do NOT make this MISTAKE with your Games!
+    - youTubeId: a4JpMP-pM6k
+      title: TOP 10 NEW Games, Made with Unity! (FEBRUARY 2026)
+    - youTubeId: 5VcshVc1a_k
+      title: How To Make Diegetic 3D UI In Unity (EASY!)
     - youTubeId: nwW5UB_gBi8
       title: How to make a living from Indie Dev WITHOUT a Hit!
-    - youTubeId: _QrcgWsr2PI
-      title: What is the FUTURE of Unity in 2026?
-    - youTubeId: PZnS3TwucQg
-      title: The Biggest Indie MISTAKE! (and 7 other tips)
-    - youTubeId: uNNz1kOsLVw
-      title: Steam's 30% Cut Isn't Even the Biggest Problem!
-  websiteLatestVideosTimestamp: 1773165900
+  websiteLatestVideosTimestamp: 1774222327

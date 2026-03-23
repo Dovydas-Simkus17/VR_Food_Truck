@@ -42,6 +42,7 @@ public class Ingredient : MonoBehaviour
     void UpdateVisuals()
     {
         mat.material = currentState.material;
+        //gameObject. = currentState.mesh;
 
     }
 

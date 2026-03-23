@@ -1,12 +1,15 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using Unity.Collections.LowLevel.Unsafe;
+using Unity.VRTemplate;
 using UnityEngine;
 
 public class Cooking : MonoBehaviour
 {
     public bool isActive = false;
-    public float heatLevel = 2f;
+    public float heatLevel = 0f;
+    public GameObject Lever;
+
     public Collider stoveTop;
     public ParticleSystem fireEffect;
     private List<Ingredient> ingredientsCooking = new List<Ingredient>();
@@ -15,8 +18,9 @@ public class Cooking : MonoBehaviour
 
     public void SetHeat(float value)
     {
-        
-        heatLevel = Mathf.Clamp01(value);
+        HingeJoint gamer = Lever.GetComponent<HingeJoint>();
+        heatLevel = Lever.GetComponent<HingeJoint>().angle;
+        Debug.Log(heatLevel);
         isActive = heatLevel > 0;
 
         if (isActive && !fireEffect.isPlaying)
@@ -60,10 +64,11 @@ public class Cooking : MonoBehaviour
 
     void MyCooking()
     {
+        SetHeat(GetHeat());
         ingredientsCooking.ForEach(cook => {
             //Debug.Log("We are cooking: " + cook);
-            Debug.Log("At the rate of: " + heatLevel * Time.fixedDeltaTime);
-            cook.Cook(heatLevel * Time.fixedDeltaTime);
+            //Debug.Log("At the rate of: " + heatLevel * Time.fixedDeltaTime);
+            cook.Cook(GetHeat() * Time.fixedDeltaTime);
         });
         
     }
