@@ -11,26 +11,26 @@ public class Cooking : MonoBehaviour
     public GameObject Lever;
 
     public Collider stoveTop;
-    public ParticleSystem fireEffect;
+    //public ParticleSystem fireEffect;
     private List<Ingredient> ingredientsCooking = new List<Ingredient>();
     //Testing
     public LayerMask m_LayerMask;
 
     public void SetHeat(float value)
     {
-        HingeJoint gamer = Lever.GetComponent<HingeJoint>();
-        heatLevel = Lever.GetComponent<HingeJoint>().angle;
-        Debug.Log(heatLevel);
+        BellowsPump gamer = Lever.GetComponent<BellowsPump>();
+        heatLevel = gamer.airAmount;
+        //Debug.Log(heatLevel);
         isActive = heatLevel > 0;
 
-        if (isActive && !fireEffect.isPlaying)
-        {
-            fireEffect.Play();
-        }
-        else if (!isActive && fireEffect.isPlaying)
-        {
-            fireEffect.Stop();
-        }
+        //if (isActive && !fireEffect.isPlaying)
+        //{
+        //    fireEffect.Play();
+        //}
+        //else if (!isActive && fireEffect.isPlaying)
+        //{
+        //    fireEffect.Stop();
+        //}
     }
 
     public float GetHeat()
@@ -47,7 +47,7 @@ public class Cooking : MonoBehaviour
     {   
         //Debug.Log("We are in MyCollisions");
         Collider[] hitColliders = Physics.OverlapBox(gameObject.transform.position, halfExtents, gameObject.transform.rotation, m_LayerMask);
-        Debug.Log(hitColliders);
+        //Debug.Log("Hit Count: " + hitColliders.Length);
 
         // Check when there is a new collider coming into contact with the box
         foreach (Collider collider in hitColliders)
@@ -74,7 +74,7 @@ public class Cooking : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "ing")
+        if (other.CompareTag("ing"))
         {
             Debug.Log("Ingredient " + other.tag);
             other.gameObject.GetComponent<Ingredient>().SetIsCookingTrue();
@@ -92,7 +92,7 @@ public class Cooking : MonoBehaviour
             other.gameObject.GetComponent<Ingredient>().SetIsCookingfalse();
             ingredientsCooking.Remove(other.GetComponent<Ingredient>());
         }
-        Debug.Log(ingredientsCooking);
+        //Debug.Log(ingredientsCooking);
     }
 
     // Draw the Box Overlap as a gizmo to show where it currently is testing. Click the Gizmos button to see this.

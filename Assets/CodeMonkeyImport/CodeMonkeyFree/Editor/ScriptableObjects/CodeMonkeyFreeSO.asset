@@ -14,44 +14,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentVersion: 1.01
   subtype: kitchenchaos
-  lastShownTimestamp: 1774222327
+  lastShownTimestamp: 1775302930
   lastUpdateResponse:
     version: 1.01
     versionUrl: https://unitycodemonkey.com
-  checkedLastUpdateTimestamp: 1774222327
+  checkedLastUpdateTimestamp: 1775302930
   lastQOTDResponse:
-    questionId: 282
-    questionText: 'If I do:
+    questionId: 288
+    questionText: 'Let''s say I saved my game data in a text file and I am now trying
+      to load it, does this work?
 
-      <p>Instantiate(myPrefab, Input.mousePosition,
-      Quaternion.identity);</p>
+      <p>string savedHealthData = "100";</p>
 
-      <p>Will myPrefab be spawned under the mouse?</p>'
+      <p>int
+      healthAmount = savedHealthData;</p>'
     answerA: Yes
     answerB: No
-    answerC: 
+    answerC: Yes but healthAmount will be 0
     answerD: 
     answerE: 
-  lastQotdTimestamp: 1774222327
+  lastQotdTimestamp: 1775302930
   lastDynamicHeaderResponse:
-    topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/humbleBundleMar26Synty.png
-    topText: Synty Bundle! Awesome Low Poly Sci-Fi Assets and Anims!
-    topLink: humblebundle
+    topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/gameDevPracticeLab_2.png
+    topText: Weekly Game Mechanic Challenges to help you learn by DOING!
+    topLink: practicelab
     bottomText: My 10+ Years of C# Knowledge in 1 Course!
     bottomLink: csharpcourse
-  lastDynamicHeaderTimestamp: 1774222327
+  lastDynamicHeaderTimestamp: 1775302930
   websiteLatestMessage:
     text: <a href="https://cmonkey.co/freecourses">Check out all my FREE courses!
       Click here!</a>
-  websiteLatestMessageTimestamp: 1774222327
+  websiteLatestMessageTimestamp: 1775302930
   websiteLatestVideos:
     videos:
-    - youTubeId: xvGRjPssGnw
-      title: Do NOT make this MISTAKE with your Games!
-    - youTubeId: a4JpMP-pM6k
-      title: TOP 10 NEW Games, Made with Unity! (FEBRUARY 2026)
-    - youTubeId: 5VcshVc1a_k
-      title: How To Make Diegetic 3D UI In Unity (EASY!)
-    - youTubeId: nwW5UB_gBi8
-      title: How to make a living from Indie Dev WITHOUT a Hit!
-  websiteLatestVideosTimestamp: 1774222327
+    - youTubeId: x3ICfkTfoUM
+      title: I QUIT Unity! Notepad is my new Game Engine!
+    - youTubeId: 9HX48q7gbBw
+      title: What exactly is a SMALL game?
+    - youTubeId: a6Nv4k2Mqng
+      title: TOP 10 NEW Systems and Tools MARCH 2026! | Unity Asset Store
+    - youTubeId: Ng0VH0SmqRo
+      title: I've wanted to do this for YEARS!
+  websiteLatestVideosTimestamp: 1775302930
