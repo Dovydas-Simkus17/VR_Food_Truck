@@ -1,4 +1,4 @@
-using NUnit.Framework;
+
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "RecipeSO", menuName = "Scriptable Objects/RecipeSO")]

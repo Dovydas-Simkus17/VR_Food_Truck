@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b7d3b2c414ea9d408f9fd2a5c50a1c2, type: 3}
   m_Name: Tomato-Slice
   m_EditorClassIdentifier: Assembly-CSharp::KitchenObjectSO
-  stateName: 
+  stateName: Tomato-Slice
   prefab: {fileID: 0}
-  material: {fileID: 0}
-  meshFilter: {fileID: 0}
+  material: {fileID: -8876429951165359728, guid: cf5f89160b95a414ba3b4a5caf13ca42, type: 3}
+  mesh: {fileID: -5804457194564966186, guid: cf5f89160b95a414ba3b4a5caf13ca42, type: 3}
   timeTillNextState: 0
   nextState: {fileID: 0}
   isCuttable: 0
