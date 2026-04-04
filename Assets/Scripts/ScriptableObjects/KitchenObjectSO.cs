@@ -15,4 +15,5 @@ public class KitchenObjectSO : ScriptableObject
 
     public KitchenObjectSO nextState;
 
+    public bool isCuttable;
 }

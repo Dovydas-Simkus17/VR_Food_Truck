@@ -86,6 +86,7 @@ public class BellowsPump : MonoBehaviour
 
         //Cools down over time
         heatAmount = heatAmount - Time.fixedDeltaTime;
+        if (heatAmount < 0f) { heatAmount = 0f; }
     }
 
     void Pump(float speed)

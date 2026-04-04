@@ -1,3 +1,4 @@
+using NUnit.Framework.Internal;
 using UnityEngine;
 
 public class Ingredient : MonoBehaviour
@@ -8,9 +9,11 @@ public class Ingredient : MonoBehaviour
 
     bool isCooking;
     Renderer mat;
+    MeshFilter meshF;
     public void Start()
     {
         mat = GetComponent<Renderer>();
+        meshF = GetComponent<MeshFilter>();
         UpdateVisuals();
     }
     public void Cook(float amount)
@@ -35,14 +38,27 @@ public class Ingredient : MonoBehaviour
 
             UpdateVisuals();
         }
+    }
+    public void Cut()
+    {
+        //Debug.Log("Somebody Tried to cut us");
+        if (currentState.isCuttable)
+        {
+            currentState = currentState.nextState;
 
+            UpdateVisuals();
+        }
 
     }
-
     void UpdateVisuals()
     {
+
         mat.material = currentState.material;
-        //gameObject. = currentState.mesh;
+        if (meshF != null && currentState.mesh != null)
+        {
+            meshF.mesh = currentState.mesh;
+            UpdateCollider();
+        }
 
     }
 
@@ -54,5 +70,18 @@ public class Ingredient : MonoBehaviour
     {
         this.isCooking = false;
 
+    }
+
+    void UpdateCollider()
+    {
+        BoxCollider box = GetComponent<BoxCollider>();
+
+        if (box == null)
+        {
+            box = gameObject.AddComponent<BoxCollider>();
+        }
+
+        box.size = meshF.mesh.bounds.size;
+        box.center = meshF.mesh.bounds.center;
     }
 }
