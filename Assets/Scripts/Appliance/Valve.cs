@@ -1,13 +1,32 @@
 using UnityEngine;
-
 public class Valve : MonoBehaviour
 {
-    public Cooking stoveTop;
-    public float rotationAmount = 0f;
+    public HingeJoint hinge;
 
-    public void TurnValve(float value)
+    public float unscrewProgress = 0f; // 0 = closed, 1 = fully open
+    public float unscrewSpeed = 0.01f;
+
+    private float lastAngle;
+
+    public float autoCloseSpeed = 0.1f;
+
+    void FixedUpdate()
     {
-        rotationAmount = Mathf.Clamp01(value);
-        stoveTop.SetHeat(rotationAmount);
+        float currentAngle = hinge.angle;
+        float delta = currentAngle - lastAngle;
+
+        if (delta > 0f)
+        {
+            unscrewProgress += delta * unscrewSpeed;
+        }
+        else
+        {
+            // Slowly close if not actively turning
+            unscrewProgress -= autoCloseSpeed * Time.fixedDeltaTime;
+        }
+
+        unscrewProgress = Mathf.Clamp01(unscrewProgress);
+
+        lastAngle = currentAngle;
     }
 }

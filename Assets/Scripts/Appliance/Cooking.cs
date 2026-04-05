@@ -89,8 +89,11 @@ public class Cooking : MonoBehaviour
         }
         else
         {
-            other.gameObject.GetComponent<Ingredient>().SetIsCookingfalse();
-            ingredientsCooking.Remove(other.GetComponent<Ingredient>());
+            if (other.CompareTag("ing"))
+            {
+                other.gameObject.GetComponent<Ingredient>().SetIsCookingfalse();
+                ingredientsCooking.Remove(other.GetComponent<Ingredient>());
+            }
         }
         //Debug.Log(ingredientsCooking);
     }

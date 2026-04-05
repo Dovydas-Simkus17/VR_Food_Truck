@@ -1,16 +1,42 @@
 using UnityEngine;
 
-public class Game_Manager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static GameManager Instance;
+
+    [Header("Game State")]
+    public int currentLevel = 1;
+    public int score = 0;
+
+    [Header("Level Settings")]
+    public int[] levelThresholds = { 10, 25, 50 }; // points needed
+
+    public System.Action OnGameUpdated;
+    void Awake()
     {
-        
+        // Singleton setup
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AddScore(int amount)
     {
-        
+        score += amount;
+        CheckLevelUp();
+        OnGameUpdated?.Invoke();
+    }
+
+    void CheckLevelUp()
+    {
+        if (currentLevel < levelThresholds.Length)
+        {
+            if (score >= levelThresholds[currentLevel - 1])
+            {
+                currentLevel++;
+                Debug.Log("Level Up! Now level " + currentLevel);
+            }
+        }
     }
 }

@@ -17,12 +17,15 @@ public class CustomerSpawner : MonoBehaviour
 
     void SpawnCustomer()
     {
-        GameObject custObj = Instantiate(customerPrefab, spawnPoint.position, spawnPoint.rotation);
+        if (servingWindow.currentCustomer == null)
+        {
+            GameObject custObj = Instantiate(customerPrefab, spawnPoint.position, spawnPoint.rotation);
 
-        Customer cust = custObj.GetComponent<Customer>();
-        RecipeSO randomOrder = possibleRecipes[Random.Range(0, possibleRecipes.Length)];
+            Customer cust = custObj.GetComponent<Customer>();
+            RecipeSO randomOrder = possibleRecipes[Random.Range(0, possibleRecipes.Length)];
 
-        cust.SetRecipe(randomOrder);
-        servingWindow.SetCustomer(cust);
+            cust.SetRecipe(randomOrder);
+            servingWindow.SetCustomer(cust);
+        }
     }
 }

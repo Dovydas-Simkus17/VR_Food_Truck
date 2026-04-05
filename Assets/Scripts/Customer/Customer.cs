@@ -9,7 +9,8 @@ public class Customer : MonoBehaviour
     public GameObject orderNotePrefab;
 
     private GameObject spawnedNote;
-
+    public float cooldown = 2f;
+    private float lastRingTime;
     public void SetOrder(RecipeSO recipe)
     {
         currentRecipe = recipe;
@@ -28,10 +29,15 @@ public class Customer : MonoBehaviour
 
     public void Serve(List<Ingredient> givenIngredients)
     {
+        if (Time.time - lastRingTime < cooldown)
+            return;
+
+        lastRingTime = Time.time;
         //Debug.Log("This is how many is in the PLate: " + givenIngredients.Count);
         if (CheckOrder(givenIngredients))
         {
             Debug.Log("Correct order!");
+            GameManager.Instance.AddScore(5);
             Leave();
         }
         else
