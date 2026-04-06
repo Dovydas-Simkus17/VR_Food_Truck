@@ -14,7 +14,11 @@ public class Valve : MonoBehaviour
     {
         float currentAngle = hinge.angle;
         float delta = currentAngle - lastAngle;
-
+        Debug.Log(currentAngle);
+        if (float.IsNaN(currentAngle))
+        {
+            currentAngle = 0f;
+        }
         if (delta > 0f)
         {
             unscrewProgress += delta * unscrewSpeed;
@@ -22,7 +26,7 @@ public class Valve : MonoBehaviour
         else
         {
             // Slowly close if not actively turning
-            unscrewProgress -= autoCloseSpeed * Time.fixedDeltaTime;
+            //unscrewProgress -= autoCloseSpeed * Time.fixedDeltaTime;
         }
 
         unscrewProgress = Mathf.Clamp01(unscrewProgress);

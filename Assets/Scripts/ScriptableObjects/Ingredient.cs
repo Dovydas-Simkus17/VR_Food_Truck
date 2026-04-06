@@ -15,6 +15,10 @@ public class Ingredient : MonoBehaviour
         mat = GetComponent<Renderer>();
         meshF = GetComponent<MeshFilter>();
         UpdateVisuals();
+        if(!(currentState.stateName.Equals("Tomato")))
+        {
+            UpdateCollider();
+        }
     }
     public void Cook(float amount)
     {

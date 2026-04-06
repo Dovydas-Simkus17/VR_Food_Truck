@@ -8,17 +8,24 @@ public class GarageDoor : MonoBehaviour
     public Vector3 closedPosition;
     public Vector3 openPosition;
 
-    public XRKnob valve;
+    public HingeJoint valve;
 
     void Update()
     {
-        float t = valve.value;
-
+        float t = valve.angle / 360f*10;
+        if (float.IsNaN(t))
+        {
+            t = 0f;
+        }
+        if(t > (360f * 10))
+        {
+            t = 360f * 10;
+        }
         door.localPosition = Vector3.Lerp(closedPosition, openPosition, t);
-        door.localRotation = Quaternion.Lerp(
-            Quaternion.Euler(0, 0, 0),
-            Quaternion.Euler(-270, 0, 0),
-            t
-        );
+        //door.localRotation = Quaternion.Lerp(
+        //    Quaternion.Euler(0, 0, 0),
+        //    Quaternion.Euler(-270, 0, 0),
+        //    t
+        //);
     }
 }
