@@ -1,0 +1,57 @@
+# Blender 4.5.4 LTS MTL File: 'OrderEquipment.blend'
+# www.blender.org
+
+newmtl Brushed_black_metal_brass
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:/brushed05_diffuse.jpg
+map_Ks C:/brushed02_specular.jpg
+map_refl C:/brushed02_metallic.jpg
+map_Bump -bm 1.000000 C:/brushed02_normal_opengl.jpg
+
+newmtl Gold_metal_(Imperfections)
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:/basecolor.jpg
+map_Ns C:/rough .jpg
+map_refl C:/gold_metallic.jpg
+map_Bump -bm 1.000000 C:/normal .jpg
+
+newmtl Paper_20
+Ka 0.200000 0.200000 0.200000
+Kd 0.080000 0.080000 0.080000
+Ks 0.200000 0.200000 0.200000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Ns -s 3 3 3 C:/paper-20_roughness.jpg
+
+newmtl Recycled_cardboard_texture
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Diffuse.png
+map_Ns C:/Roughness.png
+map_Bump -bm 0.100000 C:/Normal.png
+
+newmtl Yellow_Pencil.005
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Pencil Color.Jpg
+map_Ns C:/Pencil Roughness.jpg

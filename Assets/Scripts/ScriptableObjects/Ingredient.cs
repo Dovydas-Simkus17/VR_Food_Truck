@@ -18,10 +18,11 @@ public class Ingredient : MonoBehaviour
         mat = GetComponent<Renderer>();
         meshF = GetComponent<MeshFilter>();
         UpdateVisuals();
-        if (!(currentState.stateName.Equals("Tomato")))
-        {
-            UpdateCollider();
-        }
+        gameObject.GetComponent<SphereCollider>().enabled = true;
+        //if (!(currentState.stateName.Equals("Tomato")))
+        //{
+        //UpdateCollider();
+        //}
     }
     void Awake()
     {
@@ -93,7 +94,6 @@ public class Ingredient : MonoBehaviour
         {
             box = gameObject.AddComponent<BoxCollider>();
         }
-
         box.size = meshF.mesh.bounds.size;
         box.center = meshF.mesh.bounds.center;
     }
