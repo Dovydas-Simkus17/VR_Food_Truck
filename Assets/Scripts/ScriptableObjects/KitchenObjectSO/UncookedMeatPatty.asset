@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b7d3b2c414ea9d408f9fd2a5c50a1c2, type: 3}
   m_Name: UncookedMeatPatty
   m_EditorClassIdentifier: Assembly-CSharp::KitchenObjectSO
-  stateName: UncookedMeatPatty
+  stateName: Meat Patty
   prefab: {fileID: -8679921383154817045, guid: 02a24f0f7eb1b624ab903663ee9a248c, type: 3}
   material: {fileID: 2100000, guid: 874e968446c933942a2e13d2e840aa73, type: 2}
+  icon: {fileID: 21300000, guid: aa1bacc24dde76e47b2ec0dd4e82385b, type: 3}
   mesh: {fileID: 6561926954493806791, guid: 02a24f0f7eb1b624ab903663ee9a248c, type: 3}
   timeTillNextState: 200
   nextState: {fileID: 11400000, guid: af129620a02c19141bef53046873b7e2, type: 2}
+  isCuttable: 0

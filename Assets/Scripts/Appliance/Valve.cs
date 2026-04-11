@@ -14,7 +14,7 @@ public class Valve : MonoBehaviour
     {
         float currentAngle = hinge.angle;
         float delta = currentAngle - lastAngle;
-        Debug.Log(currentAngle);
+        //Debug.Log(currentAngle);
         if (float.IsNaN(currentAngle))
         {
             currentAngle = 0f;

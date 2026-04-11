@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "KitchenObjectSO", menuName = "Scriptable Objects/KitchenObjectSO")]
 public class KitchenObjectSO : ScriptableObject
@@ -8,6 +9,8 @@ public class KitchenObjectSO : ScriptableObject
     public GameObject prefab;
 
     public Material material;
+
+    public Sprite icon;
 
     public Mesh mesh;
 

@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b7d3b2c414ea9d408f9fd2a5c50a1c2, type: 3}
   m_Name: CookedMeatPatty
   m_EditorClassIdentifier: Assembly-CSharp::KitchenObjectSO
-  stateName: CookedMeatPatty
+  stateName: Cooked Patty
   prefab: {fileID: -8679921383154817045, guid: 598a91cf1806eae49abf8273f6ad8ffa, type: 3}
   material: {fileID: 2100000, guid: 353eec077b4390b43aab98adeac15a1e, type: 2}
+  icon: {fileID: 0}
   mesh: {fileID: 2977383563096778778, guid: 598a91cf1806eae49abf8273f6ad8ffa, type: 3}
   timeTillNextState: 300
   nextState: {fileID: 11400000, guid: 42752477b5856584f878fdbd4af4cbea, type: 2}
+  isCuttable: 0

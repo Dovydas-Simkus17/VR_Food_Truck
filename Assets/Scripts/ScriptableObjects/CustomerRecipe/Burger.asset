@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Burger
   m_EditorClassIdentifier: Assembly-CSharp::RecipeSO
   kitchenObjectSOList:
-  - {fileID: 11400000, guid: af129620a02c19141bef53046873b7e2, type: 2}
   - {fileID: 11400000, guid: 33ca648934e15e741ab812902f2fcff5, type: 2}
+  - {fileID: 11400000, guid: af129620a02c19141bef53046873b7e2, type: 2}
   - {fileID: 11400000, guid: bf87b2d159346d14880cf373a777bcc7, type: 2}
   recipeName: Burger
