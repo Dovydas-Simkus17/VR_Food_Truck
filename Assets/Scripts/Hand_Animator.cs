@@ -22,12 +22,12 @@ public class Hand_Animator : MonoBehaviour
 
     private void OnGrab(SelectEnterEventArgs args)
     {
-        Debug.Log("Something grab");
+        //Debug.Log("Something grab");
         handMesh.enabled = false;
     }
     private void OnRelease(SelectExitEventArgs args)
     {
-        Debug.Log("Something let go");
+        //Debug.Log("Something let go");
         handMesh.enabled = true;
 
     }

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 177e4b7a23b3987489c0820b046db3ee, type: 3}
-  m_Name: CheeseBurger
+  m_Name: CheeseBurger 1
   m_EditorClassIdentifier: Assembly-CSharp::RecipeSO
   kitchenObjectSOList:
   - {fileID: 11400000, guid: 33ca648934e15e741ab812902f2fcff5, type: 2}
-  - {fileID: 11400000, guid: a223d7507d66cb94c9d528e7ba7ea0ef, type: 2}
+  - {fileID: 11400000, guid: 79c435b25949ef44987c5a10b30cc11e, type: 2}
   - {fileID: 11400000, guid: af129620a02c19141bef53046873b7e2, type: 2}
   - {fileID: 11400000, guid: bf87b2d159346d14880cf373a777bcc7, type: 2}
-  recipeName: CheeseBurger
+  recipeName: LettuceBurger
