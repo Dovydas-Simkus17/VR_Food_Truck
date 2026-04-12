@@ -49,7 +49,7 @@ public class Customer : MonoBehaviour
         if (CheckOrder(givenIngredients))
         {
             Debug.Log("Correct order!");
-            GameManager.Instance.AddScore(5);
+
             Leave();
         }
         else

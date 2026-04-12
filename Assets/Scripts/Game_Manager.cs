@@ -1,42 +1,62 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class Game_Manager : MonoBehaviour
 {
-    public static GameManager Instance;
 
-    [Header("Game State")]
-    public int currentLevel = 1;
-    public int score = 0;
+    public static Game_Manager sharedInstance;
 
-    [Header("Level Settings")]
-    public int[] levelThresholds = { 10, 25, 50 }; // points needed
 
+    public List<DayData> days;
+
+    public int currentDayIndex = 0;
+    public bool dayActive;
+
+    public DayData CurrentDay => days[currentDayIndex];
+
+    public System.Action<DayData> OnDayStart;
+    public System.Action OnDayEnd;
     public System.Action OnGameUpdated;
     void Awake()
     {
         // Singleton setup
-        if (Instance == null)
-            Instance = this;
+        if (sharedInstance == null)
+            sharedInstance = this;
         else
             Destroy(gameObject);
     }
 
-    public void AddScore(int amount)
+    public void StartDay()
     {
-        score += amount;
-        CheckLevelUp();
-        OnGameUpdated?.Invoke();
+        if (dayActive) return;
+
+        dayActive = true;
+
+        OnDayStart?.Invoke(CurrentDay);
+
+        Debug.Log("Starting Day " + CurrentDay.dayNumber);
     }
 
-    void CheckLevelUp()
+    public void EndDay()
     {
-        if (currentLevel < levelThresholds.Length)
+        if (!dayActive) return;
+
+        dayActive = false;
+
+        OnDayEnd?.Invoke();
+
+        AdvanceDay();
+    }
+
+    void AdvanceDay()
+    {
+        if (currentDayIndex < days.Count - 1)
         {
-            if (score >= levelThresholds[currentLevel - 1])
-            {
-                currentLevel++;
-                Debug.Log("Level Up! Now level " + currentLevel);
-            }
+            currentDayIndex++;
+        }
+        else
+        {
+            Debug.Log("All days completed!");
         }
     }
 }

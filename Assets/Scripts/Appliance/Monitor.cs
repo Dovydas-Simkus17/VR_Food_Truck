@@ -8,14 +8,14 @@ public class Monitor : MonoBehaviour
 
     void Start()
     {
-        GameManager.Instance.OnGameUpdated += UpdateUI;
+        Game_Manager.sharedInstance.OnGameUpdated += UpdateUI;
         UpdateUI();
     }
     void UpdateUI()
     {
-        if (GameManager.Instance == null) return;
+        if (Game_Manager.sharedInstance == null) return;
 
-        levelText.text = "Level: " + GameManager.Instance.currentLevel;
-        scoreText.text = "Score: " + GameManager.Instance.score;
+        levelText.text = "Current Day: " + Game_Manager.sharedInstance.currentDayIndex;
+        scoreText.text = "All Days: " + Game_Manager.sharedInstance.days;
     }
 }

@@ -16,6 +16,7 @@ public class Ingredient : MonoBehaviour
     MeshFilter meshF;
     private XRGrabInteractable grab;
     private Rigidbody rb;
+    private Coroutine coroutine;
     public void Start()
     {
         mat = GetComponent<Renderer>();
@@ -103,6 +104,11 @@ public class Ingredient : MonoBehaviour
 
         rb.isKinematic = false;
         rb.useGravity = true;
+    }
+
+    private void OnDisable()
+    {
+        StopCoroutine(SnapNextFrame());
     }
     public void Cook(float amount)
     {

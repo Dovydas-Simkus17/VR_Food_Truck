@@ -42,7 +42,13 @@ public class ServingWindow : MonoBehaviour
         if (currentCustomer != null)
         {
             currentCustomer.Serve(itemsOnPlate);
+            foreach (Ingredient item in itemsOnPlate)
+            {
+                item.gameObject.SetActive(false);
+            }
+
             itemsOnPlate.Clear();
+            
             Notepad.ResetPad();
         }
     }

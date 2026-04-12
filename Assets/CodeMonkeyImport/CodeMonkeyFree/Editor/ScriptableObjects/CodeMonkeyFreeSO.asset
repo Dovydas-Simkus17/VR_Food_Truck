@@ -14,31 +14,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentVersion: 1.01
   subtype: kitchenchaos
-  lastShownTimestamp: 1775943181
+  lastShownTimestamp: 1776030434
   lastUpdateResponse:
     version: 1.01
     versionUrl: https://unitycodemonkey.com
-  checkedLastUpdateTimestamp: 1775943181
+  checkedLastUpdateTimestamp: 1776030435
   lastQOTDResponse:
-    questionId: 290
-    questionText: How many classes should your game have?
-    answerA: Less than 100
-    answerB: At least 100
-    answerC: As many as needed and no more
-    answerD: Just one
+    questionId: 291
+    questionText: The Profiler is useful for...
+    answerA: Balancing difficulty
+    answerB: Level Design
+    answerC: Indentifying performance bottlenecks
+    answerD: 
     answerE: 
-  lastQotdTimestamp: 1775943181
+  lastQotdTimestamp: 1776030435
   lastDynamicHeaderResponse:
     topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/gameDevPracticeLab_2.png
     topText: Weekly Game Mechanic Challenges to help you learn by DOING!
     topLink: practicelab
     bottomText: My 10+ Years of C# Knowledge in 1 Course!
     bottomLink: csharpcourse
-  lastDynamicHeaderTimestamp: 1775943181
+  lastDynamicHeaderTimestamp: 1776030435
   websiteLatestMessage:
     text: <a href="https://cmonkey.co/freecourses">Check out all my FREE courses!
       Click here!</a>
-  websiteLatestMessageTimestamp: 1775943181
+  websiteLatestMessageTimestamp: 1776030435
   websiteLatestVideos:
     videos:
     - youTubeId: MYDfoKJ6-dw
@@ -49,4 +49,4 @@ MonoBehaviour:
       title: Can you solve this Game Dev Challenge?
     - youTubeId: 4NwOhpsx824
       title: The 5 MUST KNOW trends for Game Development in 2026!
-  websiteLatestVideosTimestamp: 1775943181
+  websiteLatestVideosTimestamp: 1776030435
