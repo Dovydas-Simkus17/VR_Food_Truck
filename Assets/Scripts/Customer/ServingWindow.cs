@@ -4,7 +4,9 @@ using System.Collections.Generic;
 public class ServingWindow : MonoBehaviour
 {
     public Customer currentCustomer;
+    public Notepad Notepad;
     private List<Ingredient> itemsOnPlate = new List<Ingredient>();
+
     public void SetCustomer(Customer newCustomer)
     {
         currentCustomer = newCustomer;
@@ -41,6 +43,7 @@ public class ServingWindow : MonoBehaviour
         {
             currentCustomer.Serve(itemsOnPlate);
             itemsOnPlate.Clear();
+            Notepad.ResetPad();
         }
     }
 }

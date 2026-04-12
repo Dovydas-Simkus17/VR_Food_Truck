@@ -20,4 +20,5 @@ public class OrderNote : MonoBehaviour
 
         text.text = display;
     }
+
 }

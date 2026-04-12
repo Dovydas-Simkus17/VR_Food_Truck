@@ -18,7 +18,6 @@ public class Ingredient : MonoBehaviour
         mat = GetComponent<Renderer>();
         meshF = GetComponent<MeshFilter>();
         UpdateVisuals();
-        gameObject.GetComponent<SphereCollider>().enabled = true;
         //if (!(currentState.stateName.Equals("Tomato")))
         //{
         //UpdateCollider();

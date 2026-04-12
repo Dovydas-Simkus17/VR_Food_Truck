@@ -4,26 +4,38 @@ using UnityEngine;
 public class Customer : MonoBehaviour
 {
     public RecipeSO currentRecipe;
-
     public Transform noteSpawnPoint;
     public GameObject orderNotePrefab;
+    public Notepad notepad;
+    public float progress = 0f;
 
+    private bool alreadyCompleted = false;
     private GameObject spawnedNote;
     public float cooldown = 2f;
     private float lastRingTime;
+
+    public bool playerInRange = false;
     public void SetOrder(RecipeSO recipe)
     {
         currentRecipe = recipe;
 
-        SpawnNote();
     }
 
-    void SpawnNote()
+    private void OnTriggerEnter(Collider other)
     {
-        if (orderNotePrefab != null)
+        if (other.CompareTag("Player"))
         {
-            spawnedNote = Instantiate(orderNotePrefab, noteSpawnPoint.position, noteSpawnPoint.rotation);
-            spawnedNote.GetComponent<OrderNote>().Setup(currentRecipe);
+            playerInRange = true;
+            notepad.currentCustomer = this;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInRange = false;
+            notepad.currentCustomer = null;
         }
     }
 
@@ -70,6 +82,14 @@ public class Customer : MonoBehaviour
     public void SetRecipe(RecipeSO recipe)
     {
         currentRecipe = recipe;
-        SpawnNote();
+    }
+
+    public bool isComplete()
+    {
+        return alreadyCompleted;
+    }
+    public void Completed()
+    {
+        alreadyCompleted = true;
     }
 }
