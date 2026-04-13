@@ -16,6 +16,6 @@ public class Monitor : MonoBehaviour
         if (Game_Manager.sharedInstance == null) return;
 
         levelText.text = "Current Day: " + Game_Manager.sharedInstance.currentDayIndex;
-        scoreText.text = "All Days: " + Game_Manager.sharedInstance.days;
+        scoreText.text = "All Days: " + Game_Manager.sharedInstance.days.Count;
     }
 }

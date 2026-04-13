@@ -46,6 +46,8 @@ public class CustomerSpawner : MonoBehaviour
         }
 
         Debug.Log("Finished spawning customers");
+
+        StopSpawning();
     }
 
     void StopSpawning()
@@ -54,6 +56,7 @@ public class CustomerSpawner : MonoBehaviour
         {
             StopCoroutine(spawnRoutine);
             spawnRoutine = null;
+
         }
     }
 
