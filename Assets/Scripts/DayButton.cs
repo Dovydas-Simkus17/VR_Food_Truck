@@ -19,8 +19,8 @@ public class DayButton : MonoBehaviour
 
     }
 
-    private void OnDestroy()
-    {
-        interactable.selectEntered.RemoveListener(OnPressed);
-    }
+    //private void OnDestroy()
+    //{
+    //    interactable.selectEntered.RemoveListener(OnPressed);
+    //}
 }

@@ -2,7 +2,6 @@ using UnityEngine;
 public class Valve : MonoBehaviour
 {
     public HingeJoint hinge;
-
     public float unscrewProgress = 0f; // 0 = closed, 1 = fully open
     public float unscrewSpeed = 0.01f;
 

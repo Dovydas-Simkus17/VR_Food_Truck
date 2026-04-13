@@ -17,6 +17,9 @@ public class Ingredient : MonoBehaviour
     private XRGrabInteractable grab;
     private Rigidbody rb;
     private Coroutine coroutine;
+
+    private static readonly WaitForFixedUpdate _fixedUpdateWait = new WaitForFixedUpdate();
+
     public void Start()
     {
         mat = GetComponent<Renderer>();
@@ -34,8 +37,8 @@ public class Ingredient : MonoBehaviour
 
         grab.selectExited.AddListener(OnReleased);
         grab.selectEntered.AddListener(OnGrabbed);
-        XRSocketInteractor socket = GetComponentInChildren<XRSocketInteractor>();
-        socket.selectEntered.AddListener(OnPlaced);
+        //XRSocketInteractor socket = GetComponentInChildren<XRSocketInteractor>();
+        //socket.selectEntered.AddListener(OnPlaced);
     }
     void OnPlaced(SelectEnterEventArgs args)
     {
@@ -49,17 +52,18 @@ public class Ingredient : MonoBehaviour
     }
     void OnReleased(SelectExitEventArgs args)
     {
+        
         rb.isKinematic = false;
         rb.useGravity = true;
         rb.linearVelocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
-        StartCoroutine(SnapNextFrame());
+        //StartCoroutine(SnapNextFrame());
 
     }
 
     private IEnumerator SnapNextFrame()
     {
-        yield return null; // wait 1 frame
+        yield return _fixedUpdateWait; // wait 1 frame
 
         TrySnapToSocket();
     }
@@ -75,6 +79,7 @@ public class Ingredient : MonoBehaviour
         {
             socket.StartManualInteraction(grabInteractable);
         }
+        StopCoroutine(SnapNextFrame());
 
 
     }
@@ -106,10 +111,10 @@ public class Ingredient : MonoBehaviour
         rb.useGravity = true;
     }
 
-    private void OnDisable()
-    {
-        StopCoroutine(SnapNextFrame());
-    }
+    //private void OnDisable()
+    //{
+    //    StopCoroutine(SnapNextFrame());
+    //}
     public void Cook(float amount)
     {
         if (currentState.nextState == null)
@@ -144,15 +149,29 @@ public class Ingredient : MonoBehaviour
         }
 
     }
+    void ResetPhysics()
+    {
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+
+        rb.isKinematic = true;
+        rb.isKinematic = false;
+
+        rb.WakeUp();
+    }
     void UpdateVisuals()
     {
 
         mat.material = currentState.material;
         if (meshF != null && currentState.mesh != null)
         {
+
             meshF.mesh = currentState.mesh;
             UpdateCollider();
         }
+        ResetPhysics();
+        rb.WakeUp();
+
 
     }
 
@@ -168,36 +187,26 @@ public class Ingredient : MonoBehaviour
     void UpdateCollider()
     {
         BoxCollider box = GetComponent<BoxCollider>();
-        XRSocketInteractor socket = GetComponentInChildren<XRSocketInteractor>();
+        //XRSocketInteractor socket = GetComponentInChildren<XRSocketInteractor>();
         if (box == null)
         {
             box = gameObject.AddComponent<BoxCollider>();
         }
         box.size = meshF.mesh.bounds.size;
         box.center = meshF.mesh.bounds.center;
-        socket.transform.position = GetTopCenter(box);
+        //socket.attachTransform.localPosition = GetTopCenter(box);
     }
     Vector3 GetTopCenter(Collider col)
     {
-        Bounds b = col.bounds;
-        float minY = 0.21f;
-        Vector3 newTopCenter = Vector3.zero;
-        if (b.max.y < 0.2f)
-        {
-            newTopCenter = new Vector3(
+        Bounds b = meshF.mesh.bounds; 
+
+        return new Vector3(
             b.center.x,
-            minY,
-            b.center.z);
-        }
-        else
-        {
-            newTopCenter = new Vector3(
-            b.center.x,
-            b.max.y,
-            b.center.z);
-        }
-        
-        return newTopCenter;
+            b.max.y + b.extents.y + 0.05f,
+            b.center.z
+        );
+
+        //return newTopCenter;
     }
     public KitchenObjectSO GetCurrentState()
     {
