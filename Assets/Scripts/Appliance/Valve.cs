@@ -1,35 +1,50 @@
+using ABCodeworld.OmniDoor3D;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 public class Valve : MonoBehaviour
 {
     public HingeJoint hinge;
-    public float unscrewProgress = 0f; // 0 = closed, 1 = fully open
-    public float unscrewSpeed = 0.01f;
+    public float unscrewProgress = 0f;
+    public float unscrewSpeed = 0.7f;
 
-    private float lastAngle;
+    private float lastAngle = 0f;
+    public OmniDoor3DController door;
 
-    public float autoCloseSpeed = 0.1f;
+    private XRGrabInteractable grab;
+    private bool isGrabbed;
+    void Awake()
+    {
+        grab = GetComponent<XRGrabInteractable>();
 
+        grab.selectEntered.AddListener(_ => isGrabbed = true);
+        grab.selectExited.AddListener(_ => isGrabbed = false);
+        
+    }
     void FixedUpdate()
     {
-        float currentAngle = hinge.angle;
-        float delta = currentAngle - lastAngle;
-        //Debug.Log(currentAngle);
-        if (float.IsNaN(currentAngle))
+        if (isGrabbed)
         {
+            hinge.useLimits = false; // optional depending setup
+        }
+        float currentAngle = hinge.angle;
+        if (float.IsNaN(currentAngle)) {
             currentAngle = 0f;
         }
-        if (delta > 0f)
-        {
-            unscrewProgress += delta * unscrewSpeed;
-        }
-        else
-        {
-            // Slowly close if not actively turning
-            //unscrewProgress -= autoCloseSpeed * Time.fixedDeltaTime;
-        }
 
+        // Clean delta using Unity's built-in safe wrap handling
+        float delta = Mathf.DeltaAngle(lastAngle, currentAngle);
+
+        // Convert movement into progress
+        unscrewProgress += Mathf.Abs(delta) * unscrewSpeed;
+
+        // Clamp properly (0–1 OR 0–100 depending on your UI)
         unscrewProgress = Mathf.Clamp01(unscrewProgress);
-
+        if (unscrewProgress >= 1f)
+        {
+            door.OpenDoor?.Invoke();
+            unscrewProgress = 0f;
+        }
         lastAngle = currentAngle;
     }
+ 
 }

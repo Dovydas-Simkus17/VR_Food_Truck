@@ -111,11 +111,12 @@ public class Customer : MonoBehaviour
         if (CheckOrder(givenIngredients))
         {
             Debug.Log("Correct order!");
-
+            Game_Manager.sharedInstance.addPosiScore(1);
             Leave();
         }
         else
         {
+            Game_Manager.sharedInstance.addNegiScore(1);
             Debug.Log("Wrong order!");
         }
     }

@@ -11,7 +11,8 @@ public class Game_Manager : MonoBehaviour
 
     public int currentDayIndex = 0;
     public bool dayActive;
-
+    public int positiveScore = 0;
+    public int negativeScore = 0;
     public DayData CurrentDay => days[currentDayIndex];
 
     public System.Action<DayData> OnDayStart;
@@ -58,5 +59,13 @@ public class Game_Manager : MonoBehaviour
         {
             Debug.Log("All days completed!");
         }
+    }
+    public void addPosiScore(int score)
+    {
+        positiveScore += score;
+    }
+    public void addNegiScore(int score)
+    {
+        negativeScore += score;
     }
 }
