@@ -5,6 +5,7 @@ public class CustomerSpawner : MonoBehaviour
 {
     public GameObject customerPrefab;
     public Transform spawnPoint;
+    public Transform exitPoint;
     public ServingWindow servingWindow;
 
     public RecipeSO[] possibleRecipes;
@@ -36,7 +37,7 @@ public class CustomerSpawner : MonoBehaviour
 
         while (spawned < day.customerCount)
         {
-            if (servingWindow.currentCustomer == null)
+            if (CustomerQueue.sharedInstance.HasFreeSlot())
             {
                 SpawnCustomer();
                 spawned++;
@@ -62,12 +63,17 @@ public class CustomerSpawner : MonoBehaviour
 
     void SpawnCustomer()
     {
-        GameObject custObj = Instantiate(customerPrefab, spawnPoint.position, spawnPoint.rotation);
 
-        Customer cust = custObj.GetComponent<Customer>();
+        Transform custSpawn = spawnPoint;
+        GameObject obj = CustomerPool.SharedInstance.GetFromPool();
+
+        obj.transform.position = custSpawn.position;
+        obj.transform.rotation = custSpawn.rotation;
+
+        Customer cust = obj.GetComponent<Customer>();
         RecipeSO randomOrder = possibleRecipes[Random.Range(0, possibleRecipes.Length)];
 
         cust.SetRecipe(randomOrder);
-        servingWindow.SetCustomer(cust);
+        cust.Init(exitPoint);
     }
 }

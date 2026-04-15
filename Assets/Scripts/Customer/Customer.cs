@@ -1,26 +1,88 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Customer : MonoBehaviour
 {
     public RecipeSO currentRecipe;
+
     public Transform noteSpawnPoint;
     public GameObject orderNotePrefab;
     public Notepad notepad;
+    public bool playerInRange = false;
+
     public float progress = 0f;
+    private float currentPaitence = 0f;
+    public float maxPaitence = 30f;
 
     private bool alreadyCompleted = false;
     private GameObject spawnedNote;
+
     public float cooldown = 2f;
     private float lastRingTime;
+    public enum State
+    {
+        WalkingToQueue,
+        Waiting,
+        BeingServed,
+        Leaving
+    }
+    public State currentState;
+    private int queueIndex;
+    public Transform exitPoint;
 
-    public bool playerInRange = false;
+    private NavMeshAgent agent;
+    void Awake()
+    {
+        agent = GetComponentInChildren<NavMeshAgent>();
+    }
+    public void Init(Transform exit)
+    {
+        CustomerQueue queueManager = CustomerQueue.sharedInstance;
+        exitPoint = exit;
+
+        queueIndex = queueManager.AddCustomer(this);
+
+        if (queueIndex == -1)
+        {
+            Leave(); // queue full
+            return;
+        }
+
+        MoveTo(queueManager.GetPoint(queueIndex), queueIndex);
+        currentState = State.WalkingToQueue;
+    }
     public void SetOrder(RecipeSO recipe)
     {
         currentRecipe = recipe;
 
     }
+    void Update()
+    {
+        switch (currentState)
+        {
+            case State.WalkingToQueue:
+                if (!agent.pathPending && agent.remainingDistance < 0.2f)
+                {
+                    currentState = State.Waiting;
+                }
+                break;
 
+            case State.Waiting:
+                currentPaitence += Time.deltaTime;
+
+                if (currentPaitence >= maxPaitence)
+                {
+                    Leave();
+                }
+                break;
+
+            case State.Leaving:
+                // nothing
+                break;
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -75,10 +137,32 @@ public class Customer : MonoBehaviour
 
     void Leave()
     {
-        Destroy(spawnedNote);
-        Destroy(gameObject, 1f);
-    }
+        if (currentState == State.Leaving) return;
+        currentState = State.Leaving;
+        Debug.Log("I am leaving");
+        CustomerQueue.sharedInstance.RemoveCustomer(this);
 
+        // Move to exit
+        agent.isStopped = false;
+        agent.SetDestination(exitPoint.position);
+
+        // Start leaving process
+        StartCoroutine(LeaveRoutine());
+    }
+    IEnumerator LeaveRoutine()
+    {
+        // Wait until close to exit
+        while (agent.pathPending || agent.remainingDistance > 0.2f)
+        {
+            yield return null;
+        }
+
+        // Optional: small pause at exit (looks more natural)
+        yield return new WaitForSeconds(1f);
+
+        // Disable or destroy
+        gameObject.SetActive(false); // better for pooling
+    }
     public void SetRecipe(RecipeSO recipe)
     {
         currentRecipe = recipe;
@@ -91,5 +175,10 @@ public class Customer : MonoBehaviour
     public void Completed()
     {
         alreadyCompleted = true;
+    }
+    public void MoveTo(Transform target, int newIndex)
+    {
+        queueIndex = newIndex;
+        agent.SetDestination(target.position);
     }
 }

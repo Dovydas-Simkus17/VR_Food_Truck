@@ -27,7 +27,7 @@ public class ValveGarageController : MonoBehaviour
         float currentAngle = valveWheel.localEulerAngles.z;
         float delta = Mathf.DeltaAngle(lastAngle, currentAngle);
         lastAngle = currentAngle;
-        Debug.Log(lastAngle);
+        //Debug.Log(lastAngle);
         if (isTurning)
         {
             accumulatedDegrees += Mathf.Abs(delta);
