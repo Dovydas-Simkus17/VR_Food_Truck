@@ -13,7 +13,10 @@ public class Game_Manager : MonoBehaviour
     public bool dayActive;
     public int positiveScore = 0;
     public int negativeScore = 0;
+<<<<<<< HEAD:Assets/Scripts/Managers/Game_Manager.cs
     public static int finalScore = 0;
+=======
+>>>>>>> d77acdb3ce9e5695a4f345837a581a27d45b4108:Assets/Scripts/Game_Manager.cs
     public DayData CurrentDay => days[currentDayIndex];
 
     public System.Action<DayData> OnDayStart;
@@ -71,5 +74,8 @@ public class Game_Manager : MonoBehaviour
     {
         negativeScore += score;
     }
+<<<<<<< HEAD:Assets/Scripts/Managers/Game_Manager.cs
 
+=======
+>>>>>>> d77acdb3ce9e5695a4f345837a581a27d45b4108:Assets/Scripts/Game_Manager.cs
 }

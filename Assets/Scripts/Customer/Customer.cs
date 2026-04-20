@@ -120,14 +120,20 @@ public class Customer : MonoBehaviour
         if (CheckOrder(givenIngredients))
         {
             Debug.Log("Correct order!");
+<<<<<<< HEAD
             //play Good Effect
+=======
+>>>>>>> d77acdb3ce9e5695a4f345837a581a27d45b4108
             Game_Manager.sharedInstance.addPosiScore(1);
             Leave();
         }
         else
         {
             Game_Manager.sharedInstance.addNegiScore(1);
+<<<<<<< HEAD
             //play Bad Effect
+=======
+>>>>>>> d77acdb3ce9e5695a4f345837a581a27d45b4108
             Debug.Log("Wrong order!");
             Leave();
         }
