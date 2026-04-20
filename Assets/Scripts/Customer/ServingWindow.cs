@@ -15,6 +15,8 @@ public class ServingWindow : MonoBehaviour
     void FixedUpdate()
     {
         FindIngredients();
+        currentCustomer.increaseCurrentPaitence();
+
     }
     private Vector3 halfExtents = new Vector3(1, 1, 1);
     void FindIngredients()

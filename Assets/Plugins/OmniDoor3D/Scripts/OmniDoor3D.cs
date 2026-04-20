@@ -165,32 +165,6 @@ namespace ABCodeworld.OmniDoor3D
     { new Vector3(0, 2.16f, 2.22f), new Vector3(90, 0, 0) },   // 95%
     { new Vector3(0, 2.16f, 2.26f), new Vector3(90, 0, 0) }    // 100%
 };
-        public bool manualControl = false;
-        public float OpenAmount
-        {
-            get => rollUpPosition;
-            set
-            {
-                rollUpPosition = Mathf.Clamp01(value);
-
-                manualControl = true;
-                isMoving = false;
-                needClose = false;
-
-                ApplyGarageDoorInstant(rollUpPosition);
-            }
-        }
-        private void ApplyGarageDoorInstant(float amount)
-        {
-            int waypointCount = section0Waypoints.GetLength(0);
-            float indexFloat = amount * (waypointCount - 1);
-            int index = Mathf.FloorToInt(indexFloat);
-            float lerpFactor = indexFloat - index;
-            index = Mathf.Clamp(index, 0, waypointCount - 2);
-
-            for (int i = 0; i < internalPivots.Count; i++)
-                ApplyGarageDoorWaypoint(i, index, lerpFactor);
-        }
         private void Start()
         {
             // Attach to controllers

@@ -10,6 +10,10 @@ public class CustomerSpawner : MonoBehaviour
 
     public RecipeSO[] possibleRecipes;
     private Coroutine spawnRoutine;
+    public bool spawning = false;
+
+    private int CurrentCust;
+    private int dayMax;
     void OnEnable()
     {
         Game_Manager.sharedInstance.OnDayStart += SetupDay;
@@ -25,7 +29,9 @@ public class CustomerSpawner : MonoBehaviour
     void SetupDay(DayData day)
     {
         StopSpawning();
-
+        CurrentCust = 0;
+        spawning = true;
+        dayMax = day.customerCount;
         spawnRoutine = StartCoroutine(SpawnRoutine(day));
 
     }
@@ -47,7 +53,7 @@ public class CustomerSpawner : MonoBehaviour
         }
 
         Debug.Log("Finished spawning customers");
-
+        
         StopSpawning();
     }
 
@@ -57,7 +63,7 @@ public class CustomerSpawner : MonoBehaviour
         {
             StopCoroutine(spawnRoutine);
             spawnRoutine = null;
-
+            spawning = false;
         }
     }
 
@@ -73,7 +79,25 @@ public class CustomerSpawner : MonoBehaviour
         Customer cust = obj.GetComponent<Customer>();
         RecipeSO randomOrder = possibleRecipes[Random.Range(0, possibleRecipes.Length)];
 
+        cust.onCustomerFinished = null;
+        cust.onCustomerFinished += OnCustomerFinished;
+
         cust.SetRecipe(randomOrder);
         cust.Init(exitPoint);
+    }
+    void OnCustomerFinished(Customer c)
+    {
+        c.onCustomerFinished -= OnCustomerFinished;
+        CurrentCust++;
+
+        CheckDayEnd();
+    }
+
+    void CheckDayEnd()
+    {
+        if (!spawning && CurrentCust >= dayMax)
+        {
+            Game_Manager.sharedInstance.EndDay();
+        }
     }
 }

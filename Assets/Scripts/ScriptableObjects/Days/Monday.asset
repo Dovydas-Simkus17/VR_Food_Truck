@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Monday
   m_EditorClassIdentifier: Assembly-CSharp::DayData
   dayNumber: 0
-  customerCount: 2
+  customerCount: 10
   spawnInterval: 2
   ingredientCount: 0
   customerPatience: 0

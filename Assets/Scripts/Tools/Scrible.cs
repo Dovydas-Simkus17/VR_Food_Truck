@@ -3,7 +3,7 @@ using UnityEngine;
 public class PencilScribble : MonoBehaviour
 {
     public Notepad currentPad;
-    public float scribbleSpeed = 20f;
+    public float scribbleSpeed = 60f;
 
     private Vector3 lastPos;
     private bool touchingPad = false;
@@ -16,6 +16,7 @@ public class PencilScribble : MonoBehaviour
 
             if (movement > 0.001f)
             {
+                //Play Sound Effect
                 currentPad.AddProgress(movement * scribbleSpeed);
             }
         }

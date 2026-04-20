@@ -22,5 +22,9 @@ public class BoxSpawner : MonoBehaviour
             asda.Setup(kitchenObject);
 
         }
+        else
+        {
+            //Play bad sound effect
+        }
     }
 }

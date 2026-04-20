@@ -14,7 +14,7 @@ public class Customer : MonoBehaviour
 
     public float progress = 0f;
     private float currentPaitence = 0f;
-    public float maxPaitence = 30f;
+    public float maxPaitence = 100f;
 
     private bool alreadyCompleted = false;
     private GameObject spawnedNote;
@@ -33,9 +33,13 @@ public class Customer : MonoBehaviour
     public Transform exitPoint;
 
     private NavMeshAgent agent;
+    private Animator animate;
+    public System.Action<Customer> onCustomerFinished;
+    public CustomerUI custUI;
     void Awake()
     {
         agent = GetComponentInChildren<NavMeshAgent>();
+        animate = GetComponent<Animator>();
     }
     public void Init(Transform exit)
     {
@@ -63,6 +67,7 @@ public class Customer : MonoBehaviour
         switch (currentState)
         {
             case State.WalkingToQueue:
+
                 if (!agent.pathPending && agent.remainingDistance < 0.2f)
                 {
                     currentState = State.Waiting;
@@ -70,8 +75,9 @@ public class Customer : MonoBehaviour
                 break;
 
             case State.Waiting:
-                currentPaitence += Time.deltaTime;
-
+                Vector3 targetPosition = Camera.main.transform.position;
+                targetPosition.y = transform.position.y;
+                transform.LookAt(targetPosition);
                 if (currentPaitence >= maxPaitence)
                 {
                     Leave();
@@ -81,7 +87,10 @@ public class Customer : MonoBehaviour
             case State.Leaving:
                 // nothing
                 break;
+
         }
+        float normalizedSpeed = Mathf.InverseLerp(0f, agent.speed, agent.velocity.magnitude);
+        animate.SetFloat("Speed", normalizedSpeed);
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -111,12 +120,16 @@ public class Customer : MonoBehaviour
         if (CheckOrder(givenIngredients))
         {
             Debug.Log("Correct order!");
-
+            //play Good Effect
+            Game_Manager.sharedInstance.addPosiScore(1);
             Leave();
         }
         else
         {
+            Game_Manager.sharedInstance.addNegiScore(1);
+            //play Bad Effect
             Debug.Log("Wrong order!");
+            Leave();
         }
     }
 
@@ -157,11 +170,13 @@ public class Customer : MonoBehaviour
             yield return null;
         }
 
-        // Optional: small pause at exit (looks more natural)
+        // small pause at exit (looks more natural)
         yield return new WaitForSeconds(1f);
 
         // Disable or destroy
         gameObject.SetActive(false); // better for pooling
+
+        onCustomerFinished?.Invoke(this);
     }
     public void SetRecipe(RecipeSO recipe)
     {
@@ -180,5 +195,14 @@ public class Customer : MonoBehaviour
     {
         queueIndex = newIndex;
         agent.SetDestination(target.position);
+    }
+    public float getCurrentPaitence()
+    {
+        return currentPaitence;
+    }
+    public void increaseCurrentPaitence()
+    {
+        currentPaitence += Time.fixedDeltaTime;
+        custUI.UpdateUI();
     }
 }

@@ -1,20 +1,24 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class Notepad : MonoBehaviour
 {
     public float maxProgress = 100f;
     
     public Customer currentCustomer;
+    public NotePadUI notePadUI;
     public void AddProgress(float amount)
     {
         if (currentCustomer == null) { return; }
         currentCustomer.progress += amount;
         currentCustomer.progress = Mathf.Clamp(currentCustomer.progress, 0, maxProgress);
-
+        //Increase UI
+        notePadUI.UpdateUI();
         if (currentCustomer.progress >= maxProgress && !currentCustomer.isComplete())
         {
+            //Delete Ui
             RevealOrder();
         }
     }

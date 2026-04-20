@@ -20,8 +20,15 @@ public class BellowsPump : MonoBehaviour
 
     [Header("Output")]
     public float heatAmount;               // Total generated heat
+    [Header("Fire")]
+    public ParticleSystem fireParticles;
+    public float minEmission = 10f;
+    public float maxEmission = 100f;
 
-    [Header("Haptics (Optional)")]
+    public float minSize = 0.5f;
+    public float maxSize = 2f;
+
+    [Header("Haptics")]
     public float hapticAmplitude = 0.2f;
     public float hapticDuration = 0.05f;
 
@@ -87,6 +94,7 @@ public class BellowsPump : MonoBehaviour
         //Cools down over time
         heatAmount = heatAmount - Time.fixedDeltaTime;
         if (heatAmount < 0f) { heatAmount = 0f; }
+        UpdateFire(heatAmount);
     }
 
     void Pump(float speed)
@@ -112,5 +120,13 @@ public class BellowsPump : MonoBehaviour
     void OnRelease(SelectExitEventArgs args)
     {
         controller = null;
+    }
+    void UpdateFire(float intensity)
+    {
+        var emission = fireParticles.emission;
+        emission.rateOverTime = Mathf.Lerp(minEmission, maxEmission, intensity);
+
+        var main = fireParticles.main;
+        main.startSize = Mathf.Lerp(minSize, maxSize, intensity);
     }
 }
