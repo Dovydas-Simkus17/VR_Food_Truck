@@ -22,22 +22,30 @@ public class Valve : MonoBehaviour
     }
     void FixedUpdate()
     {
+
+
+        if (isGrabbed)
+        {
+            hinge.useLimits = false; // optional depending setup
+        }
+
         float currentAngle = hinge.angle;
         if (float.IsNaN(currentAngle)) {
             currentAngle = 0f;
         }
-        if (delta > 0f)
-        {
-            unscrewProgress += delta * unscrewSpeed;
-        }
-        else
-        {
-            // Slowly close if not actively turning
-            //unscrewProgress -= autoCloseSpeed * Time.fixedDeltaTime;
-        }
+        // Clean delta using Unity's built-in safe wrap handling
+        float delta = Mathf.DeltaAngle(lastAngle, currentAngle);
 
+        // Convert movement into progress
+        unscrewProgress += Mathf.Abs(delta) * unscrewSpeed;
+
+        // Clamp properly
         unscrewProgress = Mathf.Clamp01(unscrewProgress);
-
+        if (unscrewProgress >= 1f)
+        {
+            door.OpenDoor?.Invoke();
+            unscrewProgress = 0f;
+        }
         lastAngle = currentAngle;
     }
  
