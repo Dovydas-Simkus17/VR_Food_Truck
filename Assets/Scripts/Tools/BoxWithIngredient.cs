@@ -41,6 +41,7 @@ public class BoxWithIngredient : MonoBehaviour
         }
 
         gameObject.SetActive(false);
+        BoxSpawner.sharedInstance.decreaseSpawn();
     }
     public void Setup(KitchenObjectSO ingredient)
     {

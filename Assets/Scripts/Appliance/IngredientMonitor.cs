@@ -21,7 +21,9 @@ public class IngredientMonitorManager : MonoBehaviour
     public Image iconImage;
     public TextMeshProUGUI nameText;
     public BoxSpawner boxSpawn;
-   
+    [Header("Sound")]
+    public AudioSource source;
+    public AudioClip clip;
     void Start()
     {
         UpdateUI();
@@ -60,8 +62,17 @@ public class IngredientMonitorManager : MonoBehaviour
 
         currentIngredient = ingredient;
   
-        Debug.Log("Ordered: " + currentIngredient.stateName);
-        boxSpawn.SpawnBox(currentIngredient);
+        
+        if (boxSpawn.canSpawn())
+        {
+            Debug.Log("Ordered: " + currentIngredient.stateName);
+            boxSpawn.SpawnBox(currentIngredient);
+        }
+        else
+        {
+            Debug.Log("can't Order");
+            source.PlayOneShot(clip);
+        }
 
     }
 }

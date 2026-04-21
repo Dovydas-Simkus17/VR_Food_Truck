@@ -7,6 +7,7 @@ public class Valve : MonoBehaviour
     public float unscrewProgress = 0f;
     public float unscrewSpeed = 0.7f;
 
+
     private float lastAngle = 0f;
     public OmniDoor3DController door;
 
@@ -20,26 +21,22 @@ public class Valve : MonoBehaviour
         grab.selectExited.AddListener(_ => isGrabbed = false);
         
     }
+    
     void FixedUpdate()
     {
-
-
-        if (isGrabbed)
-        {
-            hinge.useLimits = false; // optional depending setup
-        }
-
         float currentAngle = hinge.angle;
+
         if (float.IsNaN(currentAngle)) {
             currentAngle = 0f;
         }
-        // Clean delta using Unity's built-in safe wrap handling
+
+        //Clean Delta
         float delta = Mathf.DeltaAngle(lastAngle, currentAngle);
 
-        // Convert movement into progress
+        //Convert movement into progress
         unscrewProgress += Mathf.Abs(delta) * unscrewSpeed;
 
-        // Clamp properly
+        //Clamp properly
         unscrewProgress = Mathf.Clamp01(unscrewProgress);
         if (unscrewProgress >= 1f)
         {
@@ -48,5 +45,6 @@ public class Valve : MonoBehaviour
         }
         lastAngle = currentAngle;
     }
+ 
  
 }
