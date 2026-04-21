@@ -36,6 +36,10 @@ public class Customer : MonoBehaviour
     private Animator animate;
     public System.Action<Customer> onCustomerFinished;
     public CustomerUI custUI;
+
+    public AudioClip failed;
+    public AudioClip succeed;
+    public AudioSource source;
     void Awake()
     {
         agent = GetComponentInChildren<NavMeshAgent>();
@@ -112,16 +116,15 @@ public class Customer : MonoBehaviour
 
     public void Serve(List<Ingredient> givenIngredients)
     {
-        if (Time.time - lastRingTime < cooldown)
-            return;
+        if (Time.time - lastRingTime < cooldown) { return; }
 
         lastRingTime = Time.time;
-        //Debug.Log("This is how many is in the PLate: " + givenIngredients.Count);
         if (CheckOrder(givenIngredients))
         {
             Debug.Log("Correct order!");
             //play Good Effect
-
+            source.clip = succeed;
+            source.Play();
             Game_Manager.sharedInstance.addPosiScore(1);
             Leave();
         }
@@ -129,7 +132,8 @@ public class Customer : MonoBehaviour
         {
             Game_Manager.sharedInstance.addNegiScore(1);
             //play Bad Effect
-
+            source.clip = failed;
+            source.Play();
             Debug.Log("Wrong order!");
             Leave();
         }

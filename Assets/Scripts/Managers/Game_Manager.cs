@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Game_Manager : MonoBehaviour
 {
 
     public static Game_Manager sharedInstance;
 
-
+    public DayButton DayButton;
     public List<DayData> days;
 
     public int currentDayIndex = 0;
@@ -21,11 +22,14 @@ public class Game_Manager : MonoBehaviour
     public System.Action OnGameUpdated;
     void Awake()
     {
-        // Singleton setup
-        if (sharedInstance == null)
-            sharedInstance = this;
-        else
+        if (sharedInstance != null && sharedInstance != this)
+        {
             Destroy(gameObject);
+            return;
+        }
+
+        sharedInstance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     public void StartDay()
@@ -36,7 +40,7 @@ public class Game_Manager : MonoBehaviour
 
         OnDayStart?.Invoke(CurrentDay);
 
-        Debug.Log("Starting Day " + CurrentDay.dayNumber);
+        Debug.Log("Starting Day " + currentDayIndex);
     }
 
     public void EndDay()
@@ -46,7 +50,9 @@ public class Game_Manager : MonoBehaviour
         dayActive = false;
 
         OnDayEnd?.Invoke();
+        DayButton.isOpen = false;
 
+        
         AdvanceDay();
     }
 
@@ -71,4 +77,13 @@ public class Game_Manager : MonoBehaviour
         negativeScore += score;
     }
 
+    public void ResetGame()
+    {
+        currentDayIndex = 0;
+        positiveScore = 0;
+        negativeScore = 0;
+        dayActive = false;
+
+        Debug.Log("Game Reset");
+    }
 }

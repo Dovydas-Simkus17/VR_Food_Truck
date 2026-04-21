@@ -6,17 +6,22 @@ public class DayButton : MonoBehaviour
 {
     public bool isOpen;
     private XRSimpleInteractable interactable;
+    public AudioSource source;
     private void Awake()
     {
         XRSimpleInteractable interactable = GetComponent<XRSimpleInteractable>();
         interactable.selectEntered.AddListener(OnPressed);
+        isOpen = false;
     }
 
     public void OnPressed(SelectEnterEventArgs args)
     {
-
-        Game_Manager.sharedInstance.StartDay();
-
+        if (!isOpen)
+        {
+            Game_Manager.sharedInstance.StartDay();
+            source.Play();
+            isOpen = true;
+        }
     }
 
     //private void OnDestroy()
