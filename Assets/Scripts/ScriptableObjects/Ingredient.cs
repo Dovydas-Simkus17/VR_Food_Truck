@@ -215,6 +215,9 @@ public class Ingredient : MonoBehaviour
     public void Setup(KitchenObjectSO newKitchenObjectso)
     {
         currentState = newKitchenObjectso;
+        mat = GetComponent<Renderer>();
+        meshF = GetComponent<MeshFilter>();
+        UpdateVisuals();
 
     }
 }
