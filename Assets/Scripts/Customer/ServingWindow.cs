@@ -15,6 +15,7 @@ public class ServingWindow : MonoBehaviour
     void FixedUpdate()
     {
         FindIngredients();
+        if(currentCustomer == null) { return; }
         currentCustomer.increaseCurrentPaitence();
 
     }
