@@ -122,7 +122,7 @@ public class Ingredient : MonoBehaviour
         {
             return;
         }
-        if (isCooking)
+        if (isCooking && !currentState.isCuttable)
         {
             cookTimer += amount;
             if (!audioSource.isPlaying && audioSource != null && amount > 0 && currentState.cookingClip != null)

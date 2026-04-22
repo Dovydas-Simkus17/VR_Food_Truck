@@ -1520,7 +1520,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ServingWindow
   currentCustomer: {fileID: 0}
-  Notepad: {fileID: 6084936834412544509}
 --- !u!65 &164005277
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2721,7 +2720,7 @@ MonoBehaviour:
   notepad: {fileID: 6084936834412544509}
   playerInRange: 0
   progress: 0
-  maxPaitence: 130
+  maxPaitence: 300
   cooldown: 2
   currentState: 0
   exitPoint: {fileID: 944935087}
@@ -5484,6 +5483,59 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CustomerUI
   timer: {fileID: 159526686}
   customer: {fileID: 343094860}
+--- !u!1 &1109702726
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1109702727}
+  - component: {fileID: 1109702728}
+  m_Layer: 0
+  m_Name: BottomCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1109702727
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109702726}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.13, y: -0.06, z: 14.45}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 543450652824049260}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1109702728
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109702726}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.5, y: 2.2153852, z: 6}
+  m_Center: {x: 0, y: -0.39230743, z: 0}
 --- !u!1 &1112236928
 GameObject:
   m_ObjectHideFlags: 0
@@ -9551,7 +9603,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IngredientBox
   pooledObjects: []
   objectToPool: {fileID: 970831672}
-  amountToPool: 20
+  amountToPool: 50
 --- !u!114 &1813786367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12276,6 +12328,7 @@ Transform:
   - {fileID: 1709579460}
   - {fileID: 1544065616}
   - {fileID: 1194065253}
+  - {fileID: 1109702727}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &543450653608186346
@@ -12487,7 +12540,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!195 &919132147640665370
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -16826,7 +16879,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Valve
   hinge: {fileID: 5839665316830260718}
   unscrewProgress: 0
-  unscrewSpeed: 0.0005
+  unscrewSpeed: 0.001
   movementThreshold: 1
   door: {fileID: 5839665316830260720}
   valveSound: {fileID: 5839665316830260721}
@@ -20369,7 +20422,7 @@ MonoBehaviour:
   hinge: {fileID: 8940433067701350867}
   grabInteractable: {fileID: 8940433067701350868}
   pumpThreshold: 10
-  heatMultiplier: 0.07
+  heatMultiplier: 0.04
   maxPumpSpeed: 200
   onlyCompress: 1
   smoothing: 10

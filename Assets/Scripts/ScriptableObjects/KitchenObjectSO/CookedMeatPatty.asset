@@ -18,6 +18,6 @@ MonoBehaviour:
   cookingClip: {fileID: 8300000, guid: 235938a9365af9b489aa2123110694f6, type: 3}
   icon: {fileID: 21300000, guid: f1f50c7ef90b19741b26f2040806cf56, type: 3}
   mesh: {fileID: 2977383563096778778, guid: 598a91cf1806eae49abf8273f6ad8ffa, type: 3}
-  timeTillNextState: 300
+  timeTillNextState: 600
   nextState: {fileID: 11400000, guid: 42752477b5856584f878fdbd4af4cbea, type: 2}
   isCuttable: 0

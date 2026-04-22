@@ -56,7 +56,7 @@ public class Customer : MonoBehaviour
             Leave(); 
             return;
         }
-
+        currentPaitence = 0f;
         MoveTo(queueManager.GetPoint(queueIndex), queueIndex);
         currentState = State.WalkingToQueue;
     }
@@ -163,12 +163,13 @@ public class Customer : MonoBehaviour
         if (currentState == State.Leaving) return;
         currentState = State.Leaving;
         custUI.ResetUI();
+
         Debug.Log("I am leaving");
         CustomerQueue.sharedInstance.RemoveCustomer(this);
         // Move to exit
         agent.isStopped = false;
         agent.SetDestination(exitPoint.position);
-        
+        notepad.ResetPad();
         // Start leaving process
         StartCoroutine(LeaveRoutine());
     }

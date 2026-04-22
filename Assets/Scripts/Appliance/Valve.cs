@@ -29,13 +29,17 @@ public class Valve : MonoBehaviour
 
         //Clamp properly
         unscrewProgress = Mathf.Clamp01(unscrewProgress);
-        if (!valveSound.isPlaying && Mathf.Abs(delta) > movementThreshold)
+        float movement = Mathf.Abs(delta);
+
+        if (movement > movementThreshold)
         {
-            valveSound.Play();
+            if (!valveSound.isPlaying)
+                valveSound.Play();
         }
-        else
+        else if (movement < movementThreshold * 0.5f) // hysteresis
         {
-            valveSound.Stop();
+            if (valveSound.isPlaying)
+                valveSound.Stop();
         }
         if (unscrewProgress >= 1f)
         {

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 public class ServingWindow : MonoBehaviour
 {
     public Customer currentCustomer;
-    public Notepad Notepad;
     private List<Ingredient> itemsOnPlate = new List<Ingredient>();
 
     public void SetCustomer(Customer newCustomer)
@@ -15,7 +14,10 @@ public class ServingWindow : MonoBehaviour
     void FixedUpdate()
     {
         FindIngredients();
-        if(currentCustomer == null || currentCustomer.currentState.ToString() == "Waiting") { return; }
+        if (currentCustomer == null || currentCustomer.currentState != Customer.State.Waiting)
+        {
+            return;
+        }
         currentCustomer.increaseCurrentPaitence();
         Debug.Log("Ingredients in the plate " + itemsOnPlate.Count);
 
@@ -52,8 +54,7 @@ public class ServingWindow : MonoBehaviour
             }
 
             itemsOnPlate.Clear();
-            
-            Notepad.ResetPad();
+
         }
     }
 }
