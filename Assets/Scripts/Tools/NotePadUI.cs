@@ -11,4 +11,8 @@ public class NotePadUI : MonoBehaviour
         transform.LookAt(Camera.main.transform);
         timer.fillAmount = Mathf.Clamp01(notepad.currentCustomer.progress / notepad.maxProgress);
     }
+    public void ResetUI()
+    {
+        timer.fillAmount = 0;
+    }
 }

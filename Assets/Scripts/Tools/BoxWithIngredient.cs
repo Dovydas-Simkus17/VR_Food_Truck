@@ -11,6 +11,7 @@ public class BoxWithIngredient : MonoBehaviour
     public GameObject ingredientPrefab;
     public Transform spawnPoint;
     public Image onFront;
+    public Image onBack;
     private void OnEnable()
     {
         foreach (var socket in sockets)
@@ -60,6 +61,7 @@ public class BoxWithIngredient : MonoBehaviour
             obj.transform.position = spawnPoint.position;
             obj.transform.rotation = spawnPoint.rotation;
             onFront.sprite = ingredient.icon;
+            onBack.sprite = ingredient.icon;
             IXRSelectInteractable grab = obj.GetComponent<XRGrabInteractable>();
             socket.StartManualInteraction(grab);
             

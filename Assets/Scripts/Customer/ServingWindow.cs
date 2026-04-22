@@ -15,7 +15,7 @@ public class ServingWindow : MonoBehaviour
     void FixedUpdate()
     {
         FindIngredients();
-        if(currentCustomer == null) { return; }
+        if(currentCustomer == null && currentCustomer.currentState.ToString() == "Waiting") { return; }
         currentCustomer.increaseCurrentPaitence();
 
     }

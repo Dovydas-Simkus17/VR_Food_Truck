@@ -17,7 +17,6 @@ public class Customer : MonoBehaviour
     public float maxPaitence = 100f;
 
     private bool alreadyCompleted = false;
-    private GameObject spawnedNote;
 
     public float cooldown = 2f;
     private float lastRingTime;
@@ -54,7 +53,7 @@ public class Customer : MonoBehaviour
 
         if (queueIndex == -1)
         {
-            Leave(); // queue full
+            Leave(); 
             return;
         }
 
@@ -84,6 +83,11 @@ public class Customer : MonoBehaviour
                 transform.LookAt(targetPosition);
                 if (currentPaitence >= maxPaitence)
                 {
+                    Game_Manager.sharedInstance.addNegiScore(1);
+                    //play Bad Effect
+                    source.clip = failed;
+                    source.Play();
+                    orderNotePrefab.gameObject.SetActive(false);
                     Leave();
                 }
                 break;
@@ -158,13 +162,13 @@ public class Customer : MonoBehaviour
     {
         if (currentState == State.Leaving) return;
         currentState = State.Leaving;
+        custUI.ResetUI();
         Debug.Log("I am leaving");
         CustomerQueue.sharedInstance.RemoveCustomer(this);
-
         // Move to exit
         agent.isStopped = false;
         agent.SetDestination(exitPoint.position);
-
+        
         // Start leaving process
         StartCoroutine(LeaveRoutine());
     }

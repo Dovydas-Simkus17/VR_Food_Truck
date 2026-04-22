@@ -11,5 +11,9 @@ public class CustomerUI : MonoBehaviour
         transform.LookAt(Camera.main.transform);
         timer.fillAmount = Mathf.Clamp01(customer.getCurrentPaitence() / customer.maxPaitence);
     }
+    public void ResetUI()
+    {
+        timer.fillAmount = 0;
+    }
 }
 

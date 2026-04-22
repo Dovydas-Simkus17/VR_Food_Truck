@@ -56,6 +56,7 @@ public class Notepad : MonoBehaviour
         if (currentCustomer == null) { return; }
         currentCustomer.progress = 0;
         currentCustomer.orderNotePrefab.SetActive(false);
+        notePadUI.ResetUI();
     }
     public bool CanWrite()
     {

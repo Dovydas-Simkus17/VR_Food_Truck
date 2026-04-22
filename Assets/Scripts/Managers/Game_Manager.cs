@@ -61,6 +61,7 @@ public class Game_Manager : MonoBehaviour
         if (currentDayIndex < days.Count - 1)
         {
             currentDayIndex++;
+            OnGameUpdated?.Invoke();
         }
         else
         {
