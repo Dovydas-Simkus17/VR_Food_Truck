@@ -1551,7 +1551,7 @@ Transform:
   m_GameObject: {fileID: 164005275}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.08, y: 1.84, z: 15.92}
+  m_LocalPosition: {x: 3.943, y: 1.804, z: 15.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2653,7 +2653,7 @@ MonoBehaviour:
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_ShowInteractableHoverMeshes: 1
-  m_InteractableHoverMeshMaterial: {fileID: 0}
+  m_InteractableHoverMeshMaterial: {fileID: 2100000, guid: e42270a11c28f4744b73a18278e4ef33, type: 2}
   m_InteractableCantHoverMeshMaterial: {fileID: 0}
   m_SocketActive: 1
   m_InteractableHoverScale: 1
@@ -3603,6 +3603,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -4670520448709566470, guid: 2b89023afafbdbc4684dd58dc78c2f6a, type: 3}
+--- !u!1 &475787996
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 475787997}
+  m_Layer: 0
+  m_Name: AttachPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &475787997
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475787996}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.2705981, y: 0.65328145, z: 0.2705981, w: 0.65328145}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6698692763495627906}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 45}
 --- !u!1 &483262225
 GameObject:
   m_ObjectHideFlags: 0
@@ -4093,7 +4124,7 @@ MonoBehaviour:
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_ShowInteractableHoverMeshes: 1
-  m_InteractableHoverMeshMaterial: {fileID: 0}
+  m_InteractableHoverMeshMaterial: {fileID: 2100000, guid: e42270a11c28f4744b73a18278e4ef33, type: 2}
   m_InteractableCantHoverMeshMaterial: {fileID: 0}
   m_SocketActive: 1
   m_InteractableHoverScale: 1
@@ -6943,7 +6974,7 @@ MonoBehaviour:
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_ShowInteractableHoverMeshes: 1
-  m_InteractableHoverMeshMaterial: {fileID: 0}
+  m_InteractableHoverMeshMaterial: {fileID: 2100000, guid: e42270a11c28f4744b73a18278e4ef33, type: 2}
   m_InteractableCantHoverMeshMaterial: {fileID: 0}
   m_SocketActive: 1
   m_InteractableHoverScale: 1
@@ -7462,8 +7493,8 @@ MonoBehaviour:
   DayButton: {fileID: 1594084799}
   days:
   - {fileID: 11400000, guid: ffac1ce581d53ab40a0cde4d4f943c2c, type: 2}
-  - {fileID: 11400000, guid: ffac1ce581d53ab40a0cde4d4f943c2c, type: 2}
-  - {fileID: 11400000, guid: ffac1ce581d53ab40a0cde4d4f943c2c, type: 2}
+  - {fileID: 11400000, guid: 867a6c4597592ff4a9eabe04d1194b48, type: 2}
+  - {fileID: 11400000, guid: 97dc8a506256d354da17b9ddcceb58aa, type: 2}
   currentDayIndex: 0
   dayActive: 0
   positiveScore: 0
@@ -9592,7 +9623,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1819228990}
   m_LocalRotation: {x: 0.7071068, y: 0.7071068, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0.135}
+  m_LocalPosition: {x: 0, y: 0, z: 0.1223}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9693,7 +9724,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 9.757388, y: 2.4690094, z: 9.885285, w: 2.084968}
+  m_margin: {x: 9.757388, y: 2.4690094, z: 9.690536, w: 2.084968}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
@@ -10219,8 +10250,8 @@ Transform:
   m_GameObject: {fileID: 1888665182}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.007, y: -0, z: 0.0532}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: 0.007, y: 0.0626, z: 0.0532}
+  m_LocalScale: {x: 2, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6698692763495627906}
@@ -10250,7 +10281,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8262562585505565760, guid: a79cd6dad677ab7408a58f38ac5afb0c, type: 3}
+  - {fileID: -7477108858512453342, guid: 6af3c5c8b3cd211429d69ef770e7a948, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10780,7 +10811,7 @@ MonoBehaviour:
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_ShowInteractableHoverMeshes: 1
-  m_InteractableHoverMeshMaterial: {fileID: 0}
+  m_InteractableHoverMeshMaterial: {fileID: 2100000, guid: e42270a11c28f4744b73a18278e4ef33, type: 2}
   m_InteractableCantHoverMeshMaterial: {fileID: 0}
   m_SocketActive: 1
   m_InteractableHoverScale: 1
@@ -11673,7 +11704,7 @@ MonoBehaviour:
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_ShowInteractableHoverMeshes: 1
-  m_InteractableHoverMeshMaterial: {fileID: 0}
+  m_InteractableHoverMeshMaterial: {fileID: 2100000, guid: e42270a11c28f4744b73a18278e4ef33, type: 2}
   m_InteractableCantHoverMeshMaterial: {fileID: 0}
   m_SocketActive: 1
   m_InteractableHoverScale: 1
@@ -17846,6 +17877,7 @@ Transform:
   m_Children:
   - {fileID: 1819228991}
   - {fileID: 1888665183}
+  - {fileID: 475787997}
   m_Father: {fileID: 1674444604}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6736939600939340598
@@ -18311,8 +18343,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.28326163, y: 0.17948872, z: 0.008208854}
-  m_Center: {x: -0.062273752, y: -0.035255622, z: 0.12089579}
+  m_Size: {x: 0.28326163, y: 0.3, z: 0.008208854}
+  m_Center: {x: -0.062273752, y: 0, z: 0.12089579}
 --- !u!114 &7296504625589427808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18388,7 +18420,7 @@ MonoBehaviour:
   m_StartingInteractionStrengthFilters: []
   m_AutoFindParentInteractableInHierarchy: 0
   m_ParentInteractableObject: {fileID: 0}
-  m_AttachTransform: {fileID: 0}
+  m_AttachTransform: {fileID: 475787997}
   m_SecondaryAttachTransform: {fileID: 0}
   m_UseDynamicAttach: 0
   m_MatchAttachPosition: 1

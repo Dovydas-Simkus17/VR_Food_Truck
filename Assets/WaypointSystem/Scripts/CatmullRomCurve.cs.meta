@@ -1,9 +1,0 @@
-fileFormatVersion: 2
-guid: 46771840ffefbab499668a5139ff765a
-AssetOrigin:
-  serializedVersion: 1
-  productId: 323240
-  packageName: Waypoints
-  packageVersion: 1.0
-  assetPath: Assets/WaypointSystem/Scripts/CatmullRomCurve.cs
-  uploadId: 774794

@@ -15,8 +15,9 @@ public class ServingWindow : MonoBehaviour
     void FixedUpdate()
     {
         FindIngredients();
-        if(currentCustomer == null && currentCustomer.currentState.ToString() == "Waiting") { return; }
+        if(currentCustomer == null || currentCustomer.currentState.ToString() == "Waiting") { return; }
         currentCustomer.increaseCurrentPaitence();
+        Debug.Log("Ingredients in the plate " + itemsOnPlate.Count);
 
     }
     private Vector3 halfExtents = new Vector3(1, 1, 1);
