@@ -10,7 +10,7 @@ public class Ingredient : MonoBehaviour
 {
     public KitchenObjectSO currentState;
     float cookTimer = 0f;
-
+    public AudioSource audioSource;
     bool isCooking;
     Renderer mat;
     MeshFilter meshF;
@@ -24,6 +24,7 @@ public class Ingredient : MonoBehaviour
     {
         mat = GetComponent<Renderer>();
         meshF = GetComponent<MeshFilter>();
+        audioSource.clip = currentState.cookingClip;
         UpdateVisuals();
         //if (!(currentState.stateName.Equals("Tomato")))
         //{
@@ -124,14 +125,26 @@ public class Ingredient : MonoBehaviour
         if (isCooking)
         {
             cookTimer += amount;
+            if (!audioSource.isPlaying && audioSource != null && amount > 0 && currentState.cookingClip != null)
+            {
+                audioSource.loop = true;
+                audioSource.Play();
+            }
         }
         else
         {
-            return;
+            if (audioSource.isPlaying && audioSource != null)
+            {
+                audioSource.Stop();
+            }
         }
-
+        
         if (cookTimer > currentState.timeTillNextState)
         {
+            if(audioSource != null)
+            {
+                audioSource.Stop();
+            }
             cookTimer = 0f;
             currentState = currentState.nextState;
 
@@ -143,6 +156,8 @@ public class Ingredient : MonoBehaviour
         //Debug.Log("Somebody Tried to cut us");
         if (currentState.isCuttable)
         {
+            audioSource.loop = false;
+            audioSource.Play();
             currentState = currentState.nextState;
 
             UpdateVisuals();
@@ -172,7 +187,7 @@ public class Ingredient : MonoBehaviour
         ResetPhysics();
         rb.WakeUp();
 
-
+        audioSource.clip = currentState.cookingClip;
     }
 
     public void SetIsCookingTrue()

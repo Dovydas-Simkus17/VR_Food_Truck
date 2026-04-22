@@ -1,26 +1,17 @@
 using ABCodeworld.OmniDoor3D;
 using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit.Interactables;
+using UnityEngine.Audio;
 public class Valve : MonoBehaviour
 {
     public HingeJoint hinge;
     public float unscrewProgress = 0f;
     public float unscrewSpeed = 0.7f;
-
+    public float movementThreshold = 1f;
 
     private float lastAngle = 0f;
     public OmniDoor3DController door;
+    public AudioSource valveSound;
 
-    private XRGrabInteractable grab;
-    private bool isGrabbed;
-    void Awake()
-    {
-        grab = GetComponent<XRGrabInteractable>();
-
-        grab.selectEntered.AddListener(_ => isGrabbed = true);
-        grab.selectExited.AddListener(_ => isGrabbed = false);
-        
-    }
     
     void FixedUpdate()
     {
@@ -38,6 +29,14 @@ public class Valve : MonoBehaviour
 
         //Clamp properly
         unscrewProgress = Mathf.Clamp01(unscrewProgress);
+        if (!valveSound.isPlaying && Mathf.Abs(delta) > movementThreshold)
+        {
+            valveSound.Play();
+        }
+        else
+        {
+            valveSound.Stop();
+        }
         if (unscrewProgress >= 1f)
         {
             door.OpenDoor?.Invoke();

@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::KitchenObjectSO
   stateName: BurnedMeatPatty
   prefab: {fileID: -8679921383154817045, guid: da32d18f77866bf47945f10fe354f359, type: 3}
-  material: {fileID: 2100000, guid: 90f0eed1477afe14b9e538e5bfa88cdc, type: 2}
+  material: {fileID: -4093226344146330725, guid: da32d18f77866bf47945f10fe354f359, type: 3}
+  cookingClip: {fileID: 8300000, guid: 235938a9365af9b489aa2123110694f6, type: 3}
   icon: {fileID: 21300000, guid: 713ea9afa60dd6e4ebf6503a33e8cc99, type: 3}
   mesh: {fileID: -4567602041269818776, guid: da32d18f77866bf47945f10fe354f359, type: 3}
   timeTillNextState: 0

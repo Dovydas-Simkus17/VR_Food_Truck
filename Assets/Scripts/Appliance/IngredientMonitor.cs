@@ -23,7 +23,8 @@ public class IngredientMonitorManager : MonoBehaviour
     public BoxSpawner boxSpawn;
     [Header("Sound")]
     public AudioSource source;
-    public AudioClip clip;
+    public AudioClip succeedSendclip;
+    public AudioClip failedSendclip;
     void Start()
     {
         UpdateUI();
@@ -67,11 +68,12 @@ public class IngredientMonitorManager : MonoBehaviour
         {
             Debug.Log("Ordered: " + currentIngredient.stateName);
             boxSpawn.SpawnBox(currentIngredient);
+            source.PlayOneShot(succeedSendclip);
         }
         else
         {
             Debug.Log("can't Order");
-            source.PlayOneShot(clip);
+            source.PlayOneShot(failedSendclip);
         }
 
     }

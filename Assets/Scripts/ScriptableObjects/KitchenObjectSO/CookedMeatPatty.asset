@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::KitchenObjectSO
   stateName: Cooked Patty
   prefab: {fileID: -8679921383154817045, guid: 598a91cf1806eae49abf8273f6ad8ffa, type: 3}
-  material: {fileID: 2100000, guid: 353eec077b4390b43aab98adeac15a1e, type: 2}
+  material: {fileID: -4093226344146330725, guid: 598a91cf1806eae49abf8273f6ad8ffa, type: 3}
+  cookingClip: {fileID: 8300000, guid: 235938a9365af9b489aa2123110694f6, type: 3}
   icon: {fileID: 21300000, guid: f1f50c7ef90b19741b26f2040806cf56, type: 3}
   mesh: {fileID: 2977383563096778778, guid: 598a91cf1806eae49abf8273f6ad8ffa, type: 3}
   timeTillNextState: 300

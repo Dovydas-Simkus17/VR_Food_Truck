@@ -10,6 +10,8 @@ public class KitchenObjectSO : ScriptableObject
 
     public Material material;
 
+    public AudioClip cookingClip;
+
     public Sprite icon;
 
     public Mesh mesh;
