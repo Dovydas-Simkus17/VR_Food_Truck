@@ -7,6 +7,7 @@ TagManager:
   - Anchor
   - ing
   - NotePad
+  - Trash
   layers:
   - Default
   - TransparentFX

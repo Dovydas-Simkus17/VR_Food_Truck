@@ -169,7 +169,7 @@ public class Customer : MonoBehaviour
         // Move to exit
         agent.isStopped = false;
         agent.SetDestination(exitPoint.position);
-        notepad.ResetPad();
+        notepad.ResetPad(this);
         // Start leaving process
         StartCoroutine(LeaveRoutine());
     }

@@ -51,11 +51,10 @@ public class Notepad : MonoBehaviour
         rb.isKinematic = false;
     }
 
-    public void ResetPad()
+    public void ResetPad(Customer cust)
     {
-        if (currentCustomer == null) { return; }
-        currentCustomer.progress = 0;
-        currentCustomer.orderNotePrefab.SetActive(false);
+        cust.progress = 0;
+        cust.orderNotePrefab.SetActive(false);
         notePadUI.ResetUI();
     }
     public bool CanWrite()
